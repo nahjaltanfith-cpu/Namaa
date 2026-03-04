@@ -64,7 +64,7 @@ const Index = () => {
             </motion.div>
           </AnimatePresence>
           
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-t from-nama-900/90 via-nama-900/20 to-transparent backdrop-blur-[1px]" />
 
           <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-3">
@@ -96,7 +96,7 @@ const Index = () => {
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ...springTransition, delay: 0.1 }}
+              transition={{ ...springTransition, delay: 0.01 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight drop-shadow-lg"
             >
               {lang === "ar" ? (
