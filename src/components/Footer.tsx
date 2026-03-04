@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { Mail, Phone, MapPin, ArrowUp } from "lucide-react";
+import { Mail, Phone, MapPin, ChevronRight, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import logo from "../../public/logo.png";
 
 const Footer = () => {
   const { lang, t } = useLang();
+  
   const navItems = [
     { label: t.nav.home[lang], href: "/" },
     { label: t.nav.about[lang], href: "/about" },
@@ -16,66 +18,81 @@ const Footer = () => {
     { label: t.nav.contact[lang], href: "/contact" },
   ];
 
-  return (
-    <footer className="gradient-hero text-primary-foreground relative">
-      {/* Back to top */}
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="absolute -top-6 start-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-accent flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
-      >
-        <ArrowUp className="text-accent-foreground" size={20} />
-      </motion.button>
+  const Chevron = lang === "ar" ? ChevronLeft : ChevronRight;
 
-      <div className="container mx-auto px-4 pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-11 h-11 rounded-xl bg-primary-foreground/15 flex items-center justify-center backdrop-blur-sm">
-                <span className="font-cairo font-bold text-xl">ن</span>
-              </div>
-              <span className="font-cairo font-bold text-xl">{lang === "ar" ? "نماء" : "Nama"}</span>
-            </div>
-            <p className="text-primary-foreground/60 text-sm leading-loose">{t.footer.description[lang]}</p>
+  return (
+    <footer className="relative bg-gradient-to-br from-nama-900 via-nama-800 to-nama-800 text-white overflow-hidden border-t border-white/5">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="container mx-auto px-6 pt-16 pb-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          
+          <div className="lg:col-span-2">
+            <Link to="/" className="inline-block mb-6">
+              <motion.img 
+                whileHover={{ scale: 1.05 }}
+                src={logo} 
+                alt="Nama Logo" 
+                className="h-20 md:h-24 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" 
+              />
+            </Link>
+            <p className="text-white/70 text-base leading-relaxed max-w-md">
+              {t.footer.description[lang]}
+            </p>
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-5">{t.footer.quickLinks[lang]}</h4>
-            <div className="flex flex-col gap-2">
+            <h4 className="font-bold text-xl mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500 inline-block">
+              {t.footer.quickLinks[lang]}
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   to={item.href}
-                  className="text-primary-foreground/60 hover:text-primary-foreground hover:translate-x-1 rtl:hover:-translate-x-1 transition-all duration-200 text-sm inline-block"
+                  className="group flex items-center gap-2 text-white/70 hover:text-amber-400 transition-colors text-sm font-medium"
                 >
-                  {item.label}
+                  <Chevron size={14} className="opacity-0 ltr:-translate-x-2 rtl:translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-amber-500" />
+                  <span className="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">
+                    {item.label}
+                  </span>
                 </Link>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-bold text-lg mb-5">{t.footer.contactInfo[lang]}</h4>
-            <div className="flex flex-col gap-4">
+            <h4 className="font-bold text-xl mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500 inline-block">
+              {t.footer.contactInfo[lang]}
+            </h4>
+            <div className="flex flex-col gap-5">
               {[
                 { icon: Mail, text: t.footer.email[lang] },
                 { icon: Phone, text: t.footer.phone[lang] },
                 { icon: MapPin, text: lang === "ar" ? "المملكة العربية السعودية" : "Saudi Arabia" },
               ].map(({ icon: Icon, text }, i) => (
-                <div key={i} className="flex items-center gap-3 text-sm text-primary-foreground/60 group">
-                  <div className="w-8 h-8 rounded-lg bg-primary-foreground/10 flex items-center justify-center group-hover:bg-primary-foreground/20 transition-colors">
-                    <Icon size={14} />
+                <div key={i} className="flex items-center gap-4 group cursor-pointer">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-amber-500/10 group-hover:border-amber-500/30 transition-all duration-300 shadow-lg">
+                    <Icon size={18} className="text-white/70 group-hover:text-amber-400 transition-colors" />
                   </div>
-                  <span>{text}</span>
+                  <span className="text-sm font-medium text-white/70 group-hover:text-white transition-colors">
+                    {text}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center text-sm text-primary-foreground/40">
-          © {new Date().getFullYear()} {lang === "ar" ? "جمعية نماء لتنمية القطاع غير الربحي" : "Nama Association for Non-Profit Sector Development"} — {t.footer.rights[lang]}
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-white/50 font-medium">
+            © {new Date().getFullYear()} {lang === "ar" ? "جمعية نماء لتنمية القطاع غير الربحي" : "Nama Association for Non-Profit Sector Development"}
+          </p>
+          <p className="text-sm text-white/50">
+            {t.footer.rights[lang]}
+          </p>
         </div>
       </div>
     </footer>

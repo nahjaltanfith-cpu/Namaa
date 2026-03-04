@@ -7,7 +7,7 @@ import AnimatedSection, { useCounter } from "@/components/AnimatedSection";
 
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-
+import logo from "../../public/logo.png"
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
@@ -33,58 +33,71 @@ const Index = () => {
     return () => clearInterval(interval);
   }, [nextSlide]);
 
+  const springTransition = {
+    type: "spring",
+    stiffness: 120,
+    damping: 15,
+    mass: 0.8,
+  } as const;
+
   return (
     <PageTransition>
       <div className="min-h-screen">
-        
-
-        {/* Hero with Image Carousel */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Carousel Background */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               className="absolute inset-0"
             >
-              <img src={heroImages[currentSlide]} alt="" className="w-full h-full object-cover" />
+              <motion.img 
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 6, ease: "easeOut" }}
+                src={heroImages[currentSlide]} 
+                alt="" 
+                className="w-full h-full object-cover" 
+              />
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-nama-800/75" />
-          <div className="absolute inset-0 bg-gradient-to-t from-nama-900/60 via-transparent to-nama-900/30" />
+          
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-nama-900/90 via-nama-900/20 to-transparent backdrop-blur-[1px]" />
 
-          {/* Slide indicators */}
           <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-3">
             {heroImages.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
                 className={`h-1.5 rounded-full transition-all duration-500 ${
-                  i === currentSlide ? "w-10 bg-gold" : "w-4 bg-primary-foreground/30 hover:bg-primary-foreground/50"
+                  i === currentSlide ? "w-10 bg-gold shadow-[0_0_10px_rgba(212,175,55,0.5)]" : "w-4 bg-white/40 hover:bg-white/70"
                 }`}
               />
             ))}
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="relative z-10 container mx-auto px-4 text-center mt-12">
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8 inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-gold/20 backdrop-blur-md border border-gold/30 shadow-2xl"
+              initial={{ opacity: 0, y: -30, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ ...springTransition, duration: 0.6 }}
+              className="mb-8 flex justify-center"
             >
-              <span className="font-cairo font-bold text-5xl text-gold-light">ن</span>
+              <img 
+                src={logo} 
+                alt="Nama Logo" 
+                className="w-32 h-auto md:w-48 lg:w-56 object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.4)]" 
+              />
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-4 leading-tight"
+              transition={{ ...springTransition, delay: 0.1 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight drop-shadow-lg"
             >
               {lang === "ar" ? (
                 <>جمعية <span className="text-gradient-gold">نماء</span></>
@@ -94,19 +107,19 @@ const Index = () => {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-xl md:text-3xl text-primary-foreground/80 font-medium mb-6"
+              transition={{ ...springTransition, delay: 0.2 }}
+              className="text-xl md:text-3xl text-white/95 font-semibold mb-6 drop-shadow-md"
             >
               {t.hero.subtitle[lang]}
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55 }}
-              className="text-base md:text-lg text-primary-foreground/55 max-w-2xl mx-auto mb-12 leading-relaxed"
+              transition={{ ...springTransition, delay: 0.3 }}
+              className="text-base md:text-xl text-white/80 max-w-3xl mx-auto mb-12 leading-relaxed drop-shadow-sm"
             >
               {t.hero.description[lang]}
             </motion.p>
@@ -114,24 +127,24 @@ const Index = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.7 }}
-              className="flex flex-wrap items-center justify-center gap-5"
+              transition={{ ...springTransition, delay: 0.4 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto"
             >
-              <Link to="/about">
+              <Link to="/about" className="w-full sm:w-auto">
                 <motion.span
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl gradient-gold text-gold-foreground font-bold text-base shadow-xl hover:shadow-2xl transition-shadow"
+                  className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full gradient-gold text-gold-foreground font-bold text-lg shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all duration-300"
                 >
                   {t.hero.cta1[lang]}
-                  {lang === "ar" ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+                  {lang === "ar" ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
                 </motion.span>
               </Link>
-              <Link to="/projects">
+              <Link to="/projects" className="w-full sm:w-auto">
                 <motion.span
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-gold/40 text-primary-foreground font-bold text-base hover:bg-gold/10 transition-colors"
+                  className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full backdrop-blur-md border border-white/30 text-white font-bold text-lg hover:bg-white/10 transition-all duration-300"
                 >
                   {t.hero.cta2[lang]}
                 </motion.span>
@@ -139,19 +152,9 @@ const Index = () => {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          >
-            <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <ArrowDown className="text-primary-foreground/40" size={28} />
-            </motion.div>
-          </motion.div>
+         
         </section>
 
-        {/* Our Story */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 max-w-4xl">
             <AnimatedSection className="text-center">
@@ -166,7 +169,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Vision & Mission */}
         <section className="py-24 bg-soft">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
@@ -195,7 +197,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Values */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
@@ -229,7 +230,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Board of Trustees */}
         <section className="py-24 bg-soft">
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
@@ -261,7 +261,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Team */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
@@ -293,7 +292,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Impact Numbers */}
         <section className="py-24 gradient-hero text-primary-foreground relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 start-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -325,7 +323,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <AnimatedSection className="max-w-3xl mx-auto text-center">
@@ -337,21 +334,21 @@ const Index = () => {
                   ? "نؤمن بأن التعاون هو المفتاح لتنمية القطاع غير الربحي. انضم إلينا لبناء مستقبل أفضل."
                   : "We believe collaboration is key to developing the non-profit sector. Join us in building a better future."}
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/contact">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
+                <Link to="/contact" className="w-full sm:w-auto">
                   <motion.span
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl gradient-gold text-gold-foreground font-bold shadow-xl"
+                    className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full gradient-gold text-gold-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300"
                   >
                     {t.nav.contact[lang]}
                   </motion.span>
                 </Link>
-                <Link to="/partnerships">
+                <Link to="/partnerships" className="w-full sm:w-auto">
                   <motion.span
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl border-2 border-gold/20 text-foreground font-bold hover:bg-gold/5 transition-colors"
+                    className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full border-2 border-gold/20 text-foreground font-bold hover:bg-gold/5 transition-all duration-300"
                   >
                     {t.nav.partnerships[lang]}
                   </motion.span>

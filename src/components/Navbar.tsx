@@ -2,20 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { Menu, X, Globe, Search } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import logo from "../../public/logo.png";
 
 const Navbar = () => {
   const { lang, toggleLang, t } = useLang();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -35,32 +28,24 @@ const Navbar = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="fixed top-0 inset-x-0 z-[100] px-4 md:px-8 py-2 pointer-events-none">
+    <header className="fixed top-0 inset-x-0 z-[100] px-4 md:px-8 shadow-[0_8px_32px_rgba(0,0,0,0.08)] py-2 pointer-events-none">
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`mx-auto max-w-7xl pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] 
-          ${scrolled 
-            ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] py-1 rounded-2xl border border-white/40" 
-            : "bg-white py-1.5 rounded-2xl shadow-sm border border-transparent"
-          }`}
+        className="mx-auto max-w-7xl pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] py-1 rounded-2xl border border-white/40"
       >
         <div className="flex items-center justify-between px-5 md:px-8">
           
-          {/* Logo - Large & Clear */}
           <Link to="/" className="relative flex-shrink-0">
             <motion.img
               src={logo}
               alt="Logo"
-              className={`transition-all duration-500 object-contain ${
-                scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
-              }`}
+              className="transition-all duration-500 object-contain h-16 md:h-20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             />
           </Link>
 
-          {/* Desktop Nav - Clean & Bold */}
           <div className="hidden lg:flex items-center gap-1 bg-gray-100/40 p-1 rounded-xl">
             {navItems.map((item) => (
               <Link
@@ -85,7 +70,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Controls */}
           <div className="flex items-center gap-3">
             <button className="hidden sm:flex p-2.5 text-gray-500 hover:text-primary transition-colors">
               <Search size={20} strokeWidth={2.5} />
@@ -109,7 +93,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu - Glass Card Style */}
         <AnimatePresence>
           {mobileOpen && (
             <motion.div
@@ -144,8 +127,15 @@ const Navbar = () => {
                 <div className="mt-2 p-3 bg-gray-50/50 rounded-2xl flex items-center justify-between">
                    <p className="text-[10px] font-black uppercase text-gray-400 px-2 tracking-widest">Nama Platform</p>
                    <div className="flex gap-2">
-                      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-primary"><Search size={16}/></div>
-                      <div onClick={toggleLang} className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm font-bold text-[12px]">{lang === "ar" ? "EN" : "AR"}</div>
+                      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-primary">
+                        <Search size={16}/>
+                      </div>
+                      <div 
+                        onClick={toggleLang} 
+                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm font-bold text-[12px] cursor-pointer"
+                      >
+                        {lang === "ar" ? "EN" : "AR"}
+                      </div>
                    </div>
                 </div>
               </div>
