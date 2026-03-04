@@ -52,7 +52,7 @@ const Contact = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero title={t.contact.title[lang]} subtitle={t.contact.subtitle[lang]} />
 
         <section className="py-24 bg-background">

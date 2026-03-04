@@ -24,7 +24,7 @@ const About = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero title={t.about.title[lang]} subtitle={t.about.subtitle[lang]} />
 
         {/* Our Story */}

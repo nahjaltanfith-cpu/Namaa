@@ -36,7 +36,7 @@ const Index = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
 
         {/* Hero with Image Carousel */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

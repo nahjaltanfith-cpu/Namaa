@@ -16,7 +16,7 @@ const Areas = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero title={t.workAreas.title[lang]} />
 
         <section className="py-24 bg-background">

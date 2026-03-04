@@ -15,7 +15,7 @@ const Partnerships = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero title={t.partnerships.title[lang]} subtitle={t.partnerships.subtitle[lang]} />
 
         <section className="py-24 bg-background">

@@ -15,7 +15,7 @@ const Strategy = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero
           title={t.directions.title[lang]}
           subtitle={lang === "ar" ? "خطتنا الاستراتيجية لتنمية القطاع غير الربحي وتحقيق الأثر المستدام" : "Our strategic plan for developing the non-profit sector and achieving sustainable impact"}
