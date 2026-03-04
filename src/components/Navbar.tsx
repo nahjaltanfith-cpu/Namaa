@@ -41,8 +41,8 @@ const Navbar = () => {
         animate={{ y: 0, opacity: 1 }}
         className={`mx-auto max-w-7xl pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] 
           ${scrolled 
-            ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] py-2 rounded-2xl border border-white/40" 
-            : "bg-white py-3 rounded-2xl shadow-sm border border-transparent"
+            ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] py-1 rounded-2xl border border-white/40" 
+            : "bg-white py-1.5 rounded-2xl shadow-sm border border-transparent"
           }`}
       >
         <div className="flex items-center justify-between px-5 md:px-8">
