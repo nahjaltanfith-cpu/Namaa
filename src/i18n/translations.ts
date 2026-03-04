@@ -95,6 +95,43 @@ export const translations = {
       ar: "مؤسسة أهلية تأسست في عام 1442هـ وتحمل رقم تسجيل (1047)، تهدف لتكون لبنة تسهم في تنمية القطاع غير الربحي وفقاً لرؤية المملكة 2030، ولتصبح رافداً في تطوير ممكنات القطاع.",
       en: "A civil institution established in 1442H with registration number (1047), aiming to contribute to the development of the non-profit sector in accordance with the Kingdom's Vision 2030.",
     },
+    strategicDirections: {
+      title: { ar: "التوجهات الاستراتيجية", en: "Strategic Directions" },
+      items: [
+        { ar: "التمكين النوعي لرأس المال البشري", en: "Qualitative empowerment of human capital" },
+        { ar: "التمكين المالي", en: "Financial empowerment" },
+        { ar: "تأسيس وتمكين الكيانات", en: "Establishing and empowering entities" },
+        { ar: "تحقيق التواصل والتكامل", en: "Achieving communication and integration" },
+      ],
+    },
+    strategicGoals: {
+      title: { ar: "الأهداف الاستراتيجية", en: "Strategic Goals" },
+      items: [
+        { ar: "تمكين رأس المال البشري في القطاع", en: "Empowering human capital in the sector" },
+        { ar: "تقديم الدراسات والاستشارات", en: "Providing studies and consultations" },
+        { ar: "الإسهام في التمكين المالي", en: "Contributing to financial empowerment" },
+        { ar: "الإسهام في زيادة عدد المنظمات غير الربحية وتمكينها", en: "Increasing and empowering non-profit organizations" },
+        { ar: "الإسهام في تفعيل المجالات التخصصية في القطاع", en: "Activating specialized fields in the sector" },
+        { ar: "تحقيق شراكات فعالة", en: "Achieving effective partnerships" },
+        { ar: "تعزيز الصورة الذهنية", en: "Enhancing the brand image" },
+      ],
+    },
+    workModel: {
+      title: { ar: "نموذج العمل", en: "Work Model" },
+      beneficiaries: [
+        { name: { ar: "الجهات الحكومية", en: "Government Entities" }, service: { ar: "المنح المالي والمعرفي", en: "Financial & knowledge grants" } },
+        { name: { ar: "القيادات والكفاءات", en: "Leaders & Competencies" }, service: { ar: "التنسيق والتكامل", en: "Coordination & integration" } },
+        { name: { ar: "الكيانات الأهلية", en: "Civil Entities" }, service: { ar: "المبادرات والدراسات", en: "Initiatives & studies" } },
+        { name: { ar: "الموظفون بالقطاع", en: "Sector Employees" }, service: { ar: "الشراكات والتحالفات والاستشارات", en: "Partnerships, alliances & consultations" } },
+      ],
+    },
+    executiveCommittee: {
+      title: { ar: "اللجنة التنفيذية", en: "Executive Committee" },
+      desc: {
+        ar: "تنفيذ قرارات مجلس الأمناء وفق الصلاحيات المخولة لها، والإشراف المباشر على أعمال المؤسسة.",
+        en: "Executing the Board of Trustees' decisions within delegated authorities, and directly supervising the institution's operations.",
+      },
+    },
   },
   board: {
     title: { ar: "مجلس الأمناء", en: "Board of Trustees" },
