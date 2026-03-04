@@ -292,36 +292,39 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-24 gradient-hero text-primary-foreground relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 start-0 w-96 h-96 rounded-full bg-gold/20 blur-3xl -translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 end-0 w-96 h-96 rounded-full bg-gold/10 blur-3xl translate-x-1/2 translate-y-1/2" />
-          </div>
-          <div className="container mx-auto px-4 relative z-10">
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {lang === "ar" ? <>أثرنا <span className="text-gradient-gold">بالأرقام</span></> : <>Our Impact <span className="text-gradient-gold">in Numbers</span></>}
-              </h2>
-              <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
-            </AnimatedSection>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-              {t.impact.items.map((item, i) => (
-                <CounterCard key={i} value={item.value} label={item.label[lang]} delay={i * 0.1} />
-              ))}
-            </div>
-            <AnimatedSection delay={0.5} className="text-center mt-14">
-              <Link to="/impact">
-                <motion.span
-                  whileHover={{ scale: 1.05 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-gold/30 text-gold-light hover:bg-gold/10 transition-colors text-sm font-medium"
-                >
-                  {lang === "ar" ? "المزيد عن أثرنا" : "More About Our Impact"}
-                  {lang === "ar" ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
-                </motion.span>
-              </Link>
-            </AnimatedSection>
-          </div>
-        </section>
+       <section 
+  className="relative py-24 text-primary-foreground overflow-hidden bg-fixed bg-center bg-cover"
+  style={{ backgroundImage: `url(${hero1})` }}
+>
+  <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
+  
+  <div className="container mx-auto px-4 relative z-10">
+    <AnimatedSection className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
+        {lang === "ar" ? <>أثرنا <span className="text-gradient-gold">بالأرقام</span></> : <>Our Impact <span className="text-gradient-gold">in Numbers</span></>}
+      </h2>
+      <div className="w-16 h-1 rounded-full gradient-gold mx-auto shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
+    </AnimatedSection>
+    
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+      {t.impact.items.map((item, i) => (
+        <CounterCard key={i} value={item.value} label={item.label[lang]} delay={i * 0.1} />
+      ))}
+    </div>
+    
+    <AnimatedSection delay={0.5} className="text-center mt-14">
+      <Link to="/impact">
+        <motion.span
+          whileHover={{ scale: 1.05 }}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-gold/40 text-gold-light hover:bg-gold/20 transition-all text-sm font-bold backdrop-blur-sm shadow-lg hover:shadow-gold/20"
+        >
+          {lang === "ar" ? "المزيد عن أثرنا" : "More About Our Impact"}
+          {lang === "ar" ? <ArrowLeft size={16} strokeWidth={2.5} /> : <ArrowRight size={16} strokeWidth={2.5} />}
+        </motion.span>
+      </Link>
+    </AnimatedSection>
+  </div>
+</section>
 
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4">

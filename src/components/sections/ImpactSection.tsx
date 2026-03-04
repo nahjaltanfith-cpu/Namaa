@@ -1,5 +1,6 @@
 import { useLang } from "@/i18n/LanguageContext";
 import AnimatedSection, { useCounter } from "@/components/AnimatedSection";
+import hero1 from "@/assets/hero-1.jpg";
 
 const ImpactSection = () => {
   const { lang, t } = useLang();
