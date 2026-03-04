@@ -53,7 +53,7 @@ const Navbar = () => {
               src={logo}
               alt="Logo"
               className={`transition-all duration-500 object-contain ${
-                scrolled ? "h-14 md:h-16" : "h-16 md:h-20"
+                scrolled ? "h-16 md:h-20" : "h-20 md:h-24"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
