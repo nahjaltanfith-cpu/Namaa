@@ -55,13 +55,14 @@ export const translations = {
   workAreas: {
     title: { ar: "مجالات العمل الاستراتيجية", en: "Strategic Work Areas" },
     items: [
-      { title: { ar: "الاقتصاد", en: "Economy" }, desc: { ar: "تعزيز الاستدامة المالية للقطاع غير الربحي", en: "Enhancing financial sustainability of the non-profit sector" } },
-      { title: { ar: "المنظمات", en: "Organizations" }, desc: { ar: "تطوير القدرات المؤسسية للكيانات غير الربحية", en: "Developing institutional capacity of non-profit entities" } },
-      { title: { ar: "الإنسانية", en: "Humanitarian" }, desc: { ar: "تعزيز الأثر الإنساني والاجتماعي المستدام", en: "Enhancing sustainable humanitarian and social impact" } },
+      { title: { ar: "الاقتصاد", en: "Economy" }, desc: { ar: "تعزيز الاستدامة المالية للقطاع غير الربحي وتطوير نماذج أعمال مستدامة تدعم نمو المنظمات", en: "Enhancing financial sustainability of the non-profit sector and developing sustainable business models" } },
+      { title: { ar: "المنظمات", en: "Organizations" }, desc: { ar: "تطوير القدرات المؤسسية للكيانات غير الربحية وتعزيز الحوكمة والإدارة الفعالة", en: "Developing institutional capacity of non-profit entities and enhancing governance" } },
+      { title: { ar: "الإنسانية", en: "Humanitarian" }, desc: { ar: "تعزيز الأثر الإنساني والاجتماعي المستدام من خلال برامج تنموية شاملة", en: "Enhancing sustainable humanitarian and social impact through comprehensive development programs" } },
     ],
   },
   impact: {
     title: { ar: "أثرنا بالأرقام", en: "Our Impact in Numbers" },
+    subtitle: { ar: "نفخر بما حققناه من إنجازات في تنمية القطاع غير الربحي", en: "We are proud of our achievements in developing the non-profit sector" },
     items: [
       { value: 4, label: { ar: "تدخلات مصممة ومنفذة", en: "Designed Interventions" } },
       { value: 10, label: { ar: "مشاريع منفذة", en: "Executed Projects" } },
@@ -72,7 +73,44 @@ export const translations = {
   },
   projects: {
     title: { ar: "مشاريعنا", en: "Our Projects" },
+    subtitle: { ar: "نعمل على تنفيذ مشاريع مبتكرة تحقق أثراً مستداماً في القطاع غير الربحي", en: "We implement innovative projects that create sustainable impact in the non-profit sector" },
     viewAll: { ar: "عرض الكل", en: "View All" },
+  },
+  about: {
+    title: { ar: "عن جمعية نماء", en: "About Nama Association" },
+    subtitle: { ar: "نعمل على تمكين القطاع غير الربحي ليكون أكثر تأثيراً واستدامة", en: "We empower the non-profit sector to be more impactful and sustainable" },
+    whoWeAre: { ar: "من نحن", en: "Who We Are" },
+    whoWeAreText: {
+      ar: "جمعية نماء لتنمية القطاع غير الربحي هي منظمة رائدة تسعى إلى تطوير وتمكين القطاع غير الربحي في المملكة العربية السعودية. تأسست الجمعية بهدف سد الفجوات في القطاع وتقديم حلول مبتكرة ومستدامة تساهم في نموه وازدهاره.",
+      en: "Nama Association for Non-Profit Sector Development is a leading organization dedicated to developing and empowering the non-profit sector in Saudi Arabia. The association was founded to bridge gaps in the sector and provide innovative, sustainable solutions that contribute to its growth and prosperity.",
+    },
+    whyNama: { ar: "لماذا نماء؟", en: "Why Nama?" },
+    whyNamaItems: [
+      { ar: "خبرة عميقة في القطاع غير الربحي", en: "Deep expertise in the non-profit sector" },
+      { ar: "نهج مبتكر ومستدام", en: "Innovative and sustainable approach" },
+      { ar: "شراكات استراتيجية قوية", en: "Strong strategic partnerships" },
+      { ar: "فريق متخصص ومؤهل", en: "Specialized and qualified team" },
+    ],
+  },
+  partnerships: {
+    title: { ar: "شراكاتنا", en: "Our Partnerships" },
+    subtitle: { ar: "نؤمن بأن الشراكة هي أساس النجاح في تنمية القطاع غير الربحي", en: "We believe partnership is the foundation of success in non-profit sector development" },
+    types: [
+      { title: { ar: "شراكات حكومية", en: "Government Partnerships" }, desc: { ar: "تعاون مع الجهات الحكومية لتطوير السياسات والأنظمة الداعمة للقطاع", en: "Collaborating with government entities to develop supportive policies and regulations" } },
+      { title: { ar: "شراكات مجتمعية", en: "Community Partnerships" }, desc: { ar: "العمل مع المجتمع المحلي لتعزيز المشاركة والتأثير الاجتماعي", en: "Working with local communities to enhance participation and social impact" } },
+      { title: { ar: "شراكات أكاديمية", en: "Academic Partnerships" }, desc: { ar: "التعاون مع المؤسسات الأكاديمية للبحث والتطوير في مجال القطاع غير الربحي", en: "Collaborating with academic institutions for research and development" } },
+      { title: { ar: "شراكات دولية", en: "International Partnerships" }, desc: { ar: "بناء علاقات مع المنظمات الدولية لتبادل الخبرات وأفضل الممارسات", en: "Building relationships with international organizations to exchange expertise" } },
+    ],
+  },
+  contact: {
+    title: { ar: "تواصل معنا", en: "Contact Us" },
+    subtitle: { ar: "نسعد بتواصلكم ونرحب باستفساراتكم ومقترحاتكم", en: "We welcome your inquiries and suggestions" },
+    name: { ar: "الاسم", en: "Name" },
+    email: { ar: "البريد الإلكتروني", en: "Email" },
+    subject: { ar: "الموضوع", en: "Subject" },
+    message: { ar: "الرسالة", en: "Message" },
+    send: { ar: "إرسال الرسالة", en: "Send Message" },
+    info: { ar: "معلومات التواصل", en: "Contact Information" },
   },
   footer: {
     description: {
