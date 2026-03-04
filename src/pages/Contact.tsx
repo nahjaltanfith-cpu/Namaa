@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLang } from "@/i18n/LanguageContext";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
