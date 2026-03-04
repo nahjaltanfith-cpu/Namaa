@@ -2,24 +2,23 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation, Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, Search } from "lucide-react";
+import logo from "../../public/logo.png";
 
 const Navbar = () => {
   const { lang, toggleLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     setMobileOpen(false);
-    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   const navItems = [
@@ -34,139 +33,127 @@ const Navbar = () => {
   ];
 
   const isActive = (href: string) => location.pathname === href;
-  const showTransparent = isHome && !scrolled;
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        showTransparent ? "bg-transparent" : "bg-background/95 backdrop-blur-xl shadow-card border-b border-border/50"
-      }`}
-    >
-      <div className="container mx-auto flex items-center justify-between py-3 px-4">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: 3 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center shadow-lg"
-          >
-            <span className="text-primary-foreground font-cairo font-bold text-lg">ن</span>
-          </motion.div>
-          <span className={`font-cairo font-bold text-lg transition-colors duration-300 ${
-            showTransparent ? "text-primary-foreground" : "text-foreground"
-          }`}>
-            {lang === "ar" ? "نماء" : "Nama"}
-          </span>
-        </Link>
+    <header className="fixed top-0 inset-x-0 z-[100] px-4 md:px-8 py-4 pointer-events-none">
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className={`mx-auto max-w-7xl pointer-events-auto transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] 
+          ${scrolled 
+            ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] py-2 rounded-2xl border border-white/40" 
+            : "bg-white py-3 rounded-2xl shadow-sm border border-transparent"
+          }`}
+      >
+        <div className="flex items-center justify-between px-5 md:px-8">
+          
+          {/* Logo - Large & Clear */}
+          <Link to="/" className="relative flex-shrink-0">
+            <motion.img
+              src={logo}
+              alt="Logo"
+              className={`transition-all duration-500 object-contain ${
+                scrolled ? "h-14 md:h-16" : "h-16 md:h-20"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            />
+          </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-0.5">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 group"
-            >
-              <span className={`relative z-10 transition-colors duration-300 ${
-                isActive(item.href)
-                  ? showTransparent ? "text-primary-foreground" : "text-accent"
-                  : showTransparent ? "text-primary-foreground/80 hover:text-primary-foreground" : "text-muted-foreground hover:text-foreground"
-              }`}>
-                {item.label}
-              </span>
-              {/* Active indicator */}
-              {isActive(item.href) && (
-                <motion.div
-                  layoutId="nav-active"
-                  className={`absolute inset-0 rounded-lg ${showTransparent ? "bg-primary-foreground/10" : "bg-accent/10"}`}
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-              {/* Hover indicator */}
-              {!isActive(item.href) && (
-                <span className={`absolute bottom-0.5 inset-x-3 h-0.5 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ${
-                  showTransparent ? "bg-primary-foreground/40" : "bg-accent/40"
-                }`} />
-              )}
-            </Link>
-          ))}
-        </div>
-
-        {/* Language toggle + mobile menu */}
-        <div className="flex items-center gap-2">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={toggleLang}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-              showTransparent
-                ? "bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20"
-                : "bg-accent/10 border border-accent/20 text-accent hover:bg-accent/20"
-            }`}
-          >
-            <Globe size={14} />
-            {lang === "ar" ? "EN" : "عربي"}
-          </motion.button>
-
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              showTransparent ? "text-primary-foreground hover:bg-primary-foreground/10" : "text-foreground hover:bg-muted"
-            }`}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={mobileOpen ? "close" : "menu"}
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
+          {/* Desktop Nav - Clean & Bold */}
+          <div className="hidden lg:flex items-center gap-1 bg-gray-100/40 p-1 rounded-xl">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="relative px-4 py-2 text-[13px] font-black uppercase tracking-tight transition-all"
               >
-                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-              </motion.div>
-            </AnimatePresence>
-          </button>
-        </div>
-      </div>
+                <span className={`relative z-10 transition-colors duration-300 ${
+                  isActive(item.href) ? "text-primary" : "text-gray-600 hover:text-black"
+                }`}>
+                  {item.label}
+                </span>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden bg-background/98 backdrop-blur-xl border-t border-border overflow-hidden"
-          >
-            <div className="container mx-auto py-4 px-4 flex flex-col gap-1">
-              {navItems.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: lang === "ar" ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    to={item.href}
-                    className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                      isActive(item.href)
-                        ? "bg-accent/10 text-accent font-semibold"
-                        : "text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+                {isActive(item.href) && (
+                  <motion.div
+                    layoutId="activePill"
+                    className="absolute inset-0 bg-white shadow-sm rounded-lg"
+                    transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center gap-3">
+            <button className="hidden sm:flex p-2.5 text-gray-500 hover:text-primary transition-colors">
+              <Search size={20} strokeWidth={2.5} />
+            </button>
+
+            <button
+              onClick={toggleLang}
+              className="px-4 py-2 rounded-lg text-[12px] font-black border-2 border-gray-100 hover:border-primary/30 hover:bg-primary/5 transition-all text-gray-800"
+            >
+              {lang === "ar" ? "EN" : "عربي"}
+            </button>
+
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden p-2.5 rounded-xl bg-gray-900 text-white hover:bg-primary transition-colors"
+            >
+              <AnimatePresence mode="wait">
+                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              </AnimatePresence>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu - Glass Card Style */}
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: 15, scale: 0.95 }}
+              animate={{ opacity: 1, y: 10, scale: 1 }}
+              exit={{ opacity: 0, y: 15, scale: 0.95 }}
+              className="absolute top-full left-0 right-0 mx-auto w-[95%] max-w-[400px] lg:hidden"
+            >
+              <div className="bg-white/90 backdrop-blur-2xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden p-3">
+                <div className="flex flex-col gap-1">
+                  {navItems.map((item, i) => (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      <Link
+                        to={item.href}
+                        className={`flex items-center px-5 py-4 rounded-2xl text-[15px] font-black transition-all ${
+                          isActive(item.href)
+                            ? "bg-primary text-white shadow-lg shadow-primary/20"
+                            : "text-gray-700 hover:bg-gray-100/50"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-2 p-3 bg-gray-50/50 rounded-2xl flex items-center justify-between">
+                   <p className="text-[10px] font-black uppercase text-gray-400 px-2 tracking-widest">Nama Platform</p>
+                   <div className="flex gap-2">
+                      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-primary"><Search size={16}/></div>
+                      <div onClick={toggleLang} className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm font-bold text-[12px]">{lang === "ar" ? "EN" : "AR"}</div>
+                   </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </header>
   );
 };
 
