@@ -1,5 +1,5 @@
 import { useLang } from "@/i18n/LanguageContext";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
@@ -15,7 +15,7 @@ const Impact = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero title={t.impact.title[lang]} subtitle={t.impact.subtitle[lang]} />
 
         {/* Numbers */}

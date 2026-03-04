@@ -1,5 +1,5 @@
 import { useLang } from "@/i18n/LanguageContext";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
@@ -36,7 +36,7 @@ const Projects = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
         <PageHero title={t.projects.title[lang]} subtitle={t.projects.subtitle[lang]} />
 
         <section className="py-24 bg-background">

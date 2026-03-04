@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
 import { ArrowDown, ArrowLeft, ArrowRight, Eye, Target, Shield, HeartHandshake, Star, Users, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
 import AnimatedSection, { useCounter } from "@/components/AnimatedSection";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 
@@ -36,7 +36,7 @@ const Index = () => {
   return (
     <PageTransition>
       <div className="min-h-screen">
-        <Navbar />
+        
 
         {/* Hero with Image Carousel */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
