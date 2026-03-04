@@ -99,6 +99,9 @@
   .gradient-hero {
     background: var(--gradient-hero);
   }
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+  }
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
@@ -107,6 +110,12 @@
   }
   .text-gradient {
     background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
