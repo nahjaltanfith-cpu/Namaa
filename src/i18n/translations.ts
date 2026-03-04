@@ -91,6 +91,30 @@ export const translations = {
       { ar: "شراكات استراتيجية قوية", en: "Strong strategic partnerships" },
       { ar: "فريق متخصص ومؤهل", en: "Specialized and qualified team" },
     ],
+    story: {
+      ar: "مؤسسة أهلية تأسست في عام 1442هـ وتحمل رقم تسجيل (1047)، تهدف لتكون لبنة تسهم في تنمية القطاع غير الربحي وفقاً لرؤية المملكة 2030، ولتصبح رافداً في تطوير ممكنات القطاع.",
+      en: "A civil institution established in 1442H with registration number (1047), aiming to contribute to the development of the non-profit sector in accordance with the Kingdom's Vision 2030.",
+    },
+  },
+  board: {
+    title: { ar: "مجلس الأمناء", en: "Board of Trustees" },
+    members: [
+      { name: { ar: "أ. بدر أحمد العمودي", en: "Mr. Badr Ahmad Al-Amoudi" }, role: { ar: "الرئيس", en: "Chairman" } },
+      { name: { ar: "أ. سعيد بن أحمد باسمح", en: "Mr. Saeed Bin Ahmad Basamh" }, role: { ar: "نائب الرئيس", en: "Vice Chairman" } },
+      { name: { ar: "أ. خالد بن صالح حباني", en: "Mr. Khalid Bin Saleh Habani" }, role: { ar: "عضو", en: "Member" } },
+      { name: { ar: "د. فواز محمد المنصور", en: "Dr. Fawaz Mohammed Al-Mansour" }, role: { ar: "عضو", en: "Member" } },
+      { name: { ar: "د. يوسف إبراهيم النملة", en: "Dr. Yousef Ibrahim Al-Namlah" }, role: { ar: "عضو", en: "Member" } },
+    ],
+  },
+  team: {
+    title: { ar: "فريق العمل", en: "Our Team" },
+    members: [
+      { name: { ar: "د. عبدالمجيد أبو عقيل", en: "Dr. Abdulmajeed Abu Aqil" }, role: { ar: "الرئيس التنفيذي", en: "CEO" } },
+      { name: { ar: "د. سالم بادحدوح", en: "Dr. Salem Badahdouh" }, role: { ar: "مدير مكتب الرئيس", en: "Office Director" } },
+      { name: { ar: "أ. أحمد العبلاني", en: "Mr. Ahmad Al-Ablani" }, role: { ar: "مدير إدارة التواصل", en: "Communications Director" } },
+      { name: { ar: "د. خالد باسريدة", en: "Dr. Khalid Basrida" }, role: { ar: "مدير إدارة المشاريع", en: "Projects Director" } },
+      { name: { ar: "عبدالله الحقبان", en: "Abdullah Al-Haqban" }, role: { ar: "مدير مشروع", en: "Project Manager" } },
+    ],
   },
   partnerships: {
     title: { ar: "شراكاتنا", en: "Our Partnerships" },
