@@ -318,22 +318,26 @@ const Index = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-4">
+        <section
+          className="relative py-28 text-primary-foreground overflow-hidden bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: `url(${hero1})` }}
+        >
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]" />
+          <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
                 {lang === "ar" ? <>شاركنا في صناعة <span className="text-gradient-gold">التغيير</span></> : <>Join Us in Making <span className="text-gradient-gold">a Difference</span></>}
               </h2>
-              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+              <p className="text-white/75 text-lg mb-12 leading-relaxed max-w-2xl mx-auto">
                 {lang === "ar"
                   ? "نؤمن بأن التعاون هو المفتاح لتنمية القطاع غير الربحي. انضم إلينا لبناء مستقبل أفضل."
                   : "We believe collaboration is key to developing the non-profit sector. Join us in building a better future."}
               </p>
               <Link to="/contact" className="inline-block">
                 <motion.span
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileHover={{ scale: 1.05, y: -3 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-10 py-4 rounded-full gradient-gold text-gold-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300"
+                  className="flex items-center justify-center gap-2 px-12 py-5 rounded-full gradient-gold text-gold-foreground font-bold text-lg shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300"
                 >
                   {t.nav.contact[lang]}
                 </motion.span>
