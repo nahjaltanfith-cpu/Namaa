@@ -30,10 +30,9 @@ const MobileBottomNav = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-[100] lg:hidden">
-      {/* Glassmorphism background */}
-      <div className="bg-white/90 backdrop-blur-2xl border-t border-amber-100/60 shadow-[0_-4px_30px_rgba(0,0,0,0.08)]">
-        <div className="flex items-center justify-around px-1 py-2 max-w-md mx-auto">
+    <nav className="fixed bottom-4 inset-x-0 z-[100] lg:hidden flex justify-center px-4">
+      <div className="w-[85%] max-w-md bg-white/80 backdrop-blur-2xl rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.08)] border border-white/60">
+        <div className="flex items-center justify-around px-2 py-2.5">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = isActive(item.href);
@@ -86,9 +85,6 @@ const MobileBottomNav = () => {
             );
           })}
         </div>
-
-        {/* Safe area for iPhone notch */}
-        <div className="h-[env(safe-area-inset-bottom)]" />
       </div>
     </nav>
   );
