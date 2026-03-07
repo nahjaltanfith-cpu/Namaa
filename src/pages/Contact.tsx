@@ -151,16 +151,14 @@ const Contact = () => {
               {/* Contact Info */}
               <AnimatedSection direction="right" className="lg:col-span-2">
                 <div className="space-y-6">
-                  <div className="p-8 rounded-3xl bg-soft border border-border">
+                  <div className="p-8 rounded-3xl bg-soft border-2 border-gold/20 shadow-xl ring-1 ring-gold/10">
                     <h3 className="text-xl font-bold text-foreground mb-8">
                       {lang === "ar" ? <>معلومات <span className="text-gradient-gold">التواصل</span></> : <><span className="text-gradient-gold">Contact</span> Information</>}
                     </h3>
                     <div className="space-y-6">
                       {[
                         { icon: Mail, label: lang === "ar" ? "البريد الإلكتروني" : "Email", value: "info@nama.org.sa" },
-                        { icon: Phone, label: lang === "ar" ? "الهاتف" : "Phone", value: "+966 XX XXX XXXX" },
-                        { icon: MapPin, label: lang === "ar" ? "العنوان" : "Address", value: lang === "ar" ? "جدة، المملكة العربية السعودية" : "Jeddah, Saudi Arabia" },
-                        { icon: Clock, label: lang === "ar" ? "أوقات العمل" : "Working Hours", value: lang === "ar" ? "الأحد - الخميس: 8 ص - 4 م" : "Sun - Thu: 8 AM - 4 PM" },
+                        { icon: MapPin, label: lang === "ar" ? "العنوان" : "Address", value: lang === "ar" ? "أبها، المملكة العربية السعودية" : "Abha, Saudi Arabia" },
                       ].map(({ icon: Icon, label, value }, i) => (
                         <motion.div key={i} whileHover={{ x: lang === "ar" ? -4 : 4 }} className="flex items-start gap-4 group">
                           <div className="w-12 h-12 rounded-xl gradient-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
