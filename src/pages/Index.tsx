@@ -215,12 +215,12 @@ const Index = () => {
                 transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
                 animate={{ rotate: -360 }}
                 style={{ rotate: 0 }}
-                className="absolute z-10 w-24 h-24 md:w-32 md:h-32 rounded-full bg-white border-4 border-gold/40 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.25)]"
+                className="absolute z-10 w-28 h-28 md:w-36 md:h-36 rounded-full bg-white border-4 border-gold/40 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.25)]"
               >
                 <motion.img
                   animate={{ rotate: 360 }}
                   transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                  src={logo} alt="Nama" className="w-16 h-16 md:w-22 md:h-22 object-contain"
+                  src={logo} alt="Nama" className="w-20 h-20 md:w-28 md:h-28 object-contain"
                 />
               </motion.div>
 
