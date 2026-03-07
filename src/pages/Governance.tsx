@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
-import PdfViewer from "@/components/PdfViewer";
 import { motion } from "framer-motion";
 import { Shield, Users, FileCheck, Scale, Eye } from "lucide-react";
 
@@ -34,6 +33,8 @@ const governanceItems = [
     desc: { ar: "نظام رقابة داخلي فعال يضمن حسن استخدام الموارد وتحقيق الأهداف المرجوة", en: "Effective internal oversight system ensuring proper resource utilization" },
   },
 ];
+
+const DRIVE_PDF_EMBED = "https://drive.google.com/file/d/1gJPWYm-rTZQBUqZYb1SdgtEgjdWMR9ZE/preview";
 
 const Governance = () => {
   const { lang } = useLang();
@@ -93,10 +94,15 @@ const Governance = () => {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <PdfViewer
-                url="/documents/basic-regulations.pdf"
-                title={lang === "ar" ? "اللائحة الأساسية" : "Basic Regulations"}
-              />
+              <div className="rounded-2xl border border-border bg-card shadow-lg overflow-hidden">
+                <iframe
+                  src={DRIVE_PDF_EMBED}
+                  className="w-full h-[600px] md:h-[850px]"
+                  title={lang === "ar" ? "اللائحة الأساسية" : "Basic Regulations"}
+                  allow="autoplay"
+                  sandbox="allow-scripts allow-same-origin allow-popups"
+                />
+              </div>
             </AnimatedSection>
           </div>
         </section>
