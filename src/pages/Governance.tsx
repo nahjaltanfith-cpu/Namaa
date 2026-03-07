@@ -86,22 +86,11 @@ const Governance = () => {
                     {lang === "ar" ? "اللائحة الأساسية" : "Basic Regulations"}
                   </h2>
                 </div>
-                <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
+                <p className="text-muted-foreground max-w-2xl mx-auto">
                   {lang === "ar"
                     ? "يمكنك الاطلاع على اللائحة الأساسية للجمعية وتصفحها أدناه"
                     : "Browse and review the association's basic regulations below"}
                 </p>
-                <motion.a
-                  href="https://drive.google.com/uc?export=download&id=1gJPWYm-rTZQBUqZYb1SdgtEgjdWMR9ZE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <Download size={18} />
-                  {lang === "ar" ? "تحميل اللائحة الأساسية" : "Download Basic Regulations"}
-                </motion.a>
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
@@ -113,6 +102,19 @@ const Governance = () => {
                   allow="autoplay"
                   sandbox="allow-scripts allow-same-origin allow-popups"
                 />
+              </div>
+              <div className="flex justify-center mt-8">
+                <motion.a
+                  href="https://drive.google.com/file/d/1gJPWYm-rTZQBUqZYb1SdgtEgjdWMR9ZE/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  <Download size={18} />
+                  {lang === "ar" ? "تحميل اللائحة الأساسية" : "Download Basic Regulations"}
+                </motion.a>
               </div>
             </AnimatedSection>
           </div>
