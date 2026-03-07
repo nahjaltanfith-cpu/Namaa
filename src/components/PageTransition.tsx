@@ -6,19 +6,19 @@ interface PageTransitionProps {
 }
 
 const pageVariants = {
-  initial: { opacity: 0 },
+  initial: { opacity: 1 },
   animate: { opacity: 1 },
-  exit: { opacity: 0 },
+  exit: { opacity: 1 },
 };
 
 const PageTransition = ({ children }: PageTransitionProps) => {
   return (
     <motion.div
-      initial="initial"
+      initial={false}
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      transition={{ duration: 0.15, ease: "easeOut" }}
+      transition={{ duration: 0.08, ease: "linear" }}
       className="pb-24 lg:pb-0"
     >
       {children}
