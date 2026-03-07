@@ -267,14 +267,18 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Strategic Directions */}
-        <section className="py-24 bg-soft">
-          <div className="container mx-auto px-4">
+        {/* Strategic Directions - Parallax */}
+        <section
+          className="relative py-28 text-primary-foreground overflow-hidden bg-fixed bg-center bg-cover"
+          style={{ backgroundImage: `url(${hero1})` }}
+        >
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
+          <div className="container mx-auto px-4 relative z-10">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
                 {lang === "ar" ? <>التوجهات <span className="text-gradient-gold">الاستراتيجية</span></> : <>Strategic <span className="text-gradient-gold">Directions</span></>}
               </h2>
-              <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
+              <div className="w-16 h-1 rounded-full gradient-gold mx-auto shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
             </AnimatedSection>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -284,16 +288,16 @@ const Index = () => {
                   <AnimatedSection key={i} delay={i * 0.1}>
                     <motion.div
                       whileHover={{ y: -6, scale: 1.02 }}
-                      className="group relative p-8 rounded-2xl border border-border bg-background hover:shadow-card-hover transition-all duration-500 overflow-hidden"
+                      className="group relative p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-500 overflow-hidden"
                     >
                       <div className="absolute top-0 start-0 w-1 h-full gradient-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl gradient-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <div className="w-12 h-12 rounded-xl gradient-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
                           <Icon className="text-gold-foreground" size={22} />
                         </div>
                         <div>
                           <span className="text-xs font-bold text-gold mb-2 block">0{i + 1}</span>
-                          <p className="text-foreground font-semibold text-sm leading-relaxed">{item[lang]}</p>
+                          <p className="text-white/90 font-semibold text-sm leading-relaxed">{item[lang]}</p>
                         </div>
                       </div>
                     </motion.div>
@@ -304,31 +308,32 @@ const Index = () => {
           </div>
         </section>
 
-        {/* CTA */}
-        <section
-          className="relative py-28 text-primary-foreground overflow-hidden bg-fixed bg-center bg-cover"
-          style={{ backgroundImage: `url(${hero1})` }}
-        >
-          <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]" />
-          <div className="container mx-auto px-4 relative z-10">
-            <AnimatedSection className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-                {lang === "ar" ? <>شاركنا في صناعة <span className="text-gradient-gold">التغيير</span></> : <>Join Us in Making <span className="text-gradient-gold">a Difference</span></>}
-              </h2>
-              <p className="text-white/75 text-lg mb-12 leading-relaxed max-w-2xl mx-auto">
-                {lang === "ar"
-                  ? "نؤمن بأن التعاون هو المفتاح لتنمية القطاع غير الربحي. انضم إلينا لبناء مستقبل أفضل."
-                  : "We believe collaboration is key to developing the non-profit sector. Join us in building a better future."}
-              </p>
-              <Link to="/contact" className="inline-block">
-                <motion.span
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-12 py-5 rounded-full gradient-gold text-gold-foreground font-bold text-lg shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:shadow-[0_0_40px_rgba(212,175,55,0.5)] transition-all duration-300"
-                >
-                  {t.nav.contact[lang]}
-                </motion.span>
-              </Link>
+        {/* CTA - Bordered Card */}
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <AnimatedSection className="max-w-3xl mx-auto">
+              <motion.div
+                whileHover={{ y: -4 }}
+                className="text-center p-12 md:p-16 rounded-3xl border-2 border-gold/25 bg-soft shadow-[0_0_40px_rgba(212,175,55,0.08)] hover:shadow-[0_0_60px_rgba(212,175,55,0.15)] hover:border-gold/40 transition-all duration-500"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                  {lang === "ar" ? <>شاركنا في صناعة <span className="text-gradient-gold">التغيير</span></> : <>Join Us in Making <span className="text-gradient-gold">a Difference</span></>}
+                </h2>
+                <p className="text-muted-foreground text-lg mb-10 leading-relaxed max-w-2xl mx-auto">
+                  {lang === "ar"
+                    ? "نؤمن بأن التعاون هو المفتاح لتنمية القطاع غير الربحي. انضم إلينا لبناء مستقبل أفضل."
+                    : "We believe collaboration is key to developing the non-profit sector. Join us in building a better future."}
+                </p>
+                <Link to="/contact" className="inline-block">
+                  <motion.span
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center justify-center gap-2 px-12 py-5 rounded-full gradient-gold text-gold-foreground font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+                  >
+                    {t.nav.contact[lang]}
+                  </motion.span>
+                </Link>
+              </motion.div>
             </AnimatedSection>
           </div>
         </section>
