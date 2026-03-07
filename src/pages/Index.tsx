@@ -202,35 +202,44 @@ const Index = () => {
               <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
             </AnimatedSection>
 
-            <div className="relative max-w-sm md:max-w-md mx-auto aspect-square flex items-center justify-center">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+              className="relative max-w-sm md:max-w-md mx-auto aspect-square flex items-center justify-center"
+            >
               {/* Center Logo */}
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
-                className="absolute z-10 w-20 h-20 md:w-28 md:h-28 rounded-full gradient-gold flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.3)]"
+                animate={{ rotate: -360 }}
+                style={{ rotate: 0 }}
+                className="absolute z-10 w-28 h-28 md:w-36 md:h-36 rounded-full bg-white border-4 border-gold/40 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.25)]"
               >
-                <img src={logo} alt="Nama" className="w-12 h-12 md:w-18 md:h-18 object-contain" />
+                <motion.img
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  src={logo} alt="Nama" className="w-20 h-20 md:w-28 md:h-28 object-contain"
+                />
               </motion.div>
 
-              {/* Connecting Lines (behind boxes) */}
+              {/* Connecting Lines + Values */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
                 {t.values.items.map((_, i) => {
                   const total = t.values.items.length;
                   const angle = (i * 360) / total - 90;
-                  const lineRadius = 35;
-                  const lx = 50 + lineRadius * Math.cos((angle * Math.PI) / 180);
-                  const ly = 50 + lineRadius * Math.sin((angle * Math.PI) / 180);
+                  const radius = 40;
+                  const cx = 50 + radius * Math.cos((angle * Math.PI) / 180);
+                  const cy = 50 + radius * Math.sin((angle * Math.PI) / 180);
                   return (
                     <motion.line
                       key={i}
-                      x1="50" y1="50" x2={lx} y2={ly}
+                      x1="50" y1="50" x2={cx} y2={cy}
                       stroke="hsl(var(--gold))"
-                      strokeWidth="0.4"
-                      strokeDasharray="1.5 1.5"
+                      strokeWidth="0.3"
                       initial={{ pathLength: 0, opacity: 0 }}
-                      whileInView={{ pathLength: 1, opacity: 0.5 }}
+                      whileInView={{ pathLength: 1, opacity: 0.4 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8, delay: 0.1 * i + 0.3 }}
                     />
@@ -238,7 +247,7 @@ const Index = () => {
                 })}
               </svg>
 
-              {/* Star Values */}
+              {/* Value Boxes */}
               {t.values.items.map((item, i) => {
                 const total = t.values.items.length;
                 const angle = (i * 360) / total - 90;
@@ -247,12 +256,8 @@ const Index = () => {
                 const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
 
                 return (
-                  <motion.div
+                  <div
                     key={i}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 120, delay: 0.1 * i + 0.5 }}
                     className="absolute z-20"
                     style={{
                       left: `${x}%`,
@@ -261,15 +266,17 @@ const Index = () => {
                     }}
                   >
                     <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-background border-2 border-gold/25 shadow-lg flex items-center justify-center hover:border-gold/60 hover:shadow-xl transition-all duration-300"
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                      whileHover={{ scale: 1.15 }}
+                      className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-background border-2 border-gold/30 shadow-lg flex items-center justify-center hover:border-gold/60 hover:shadow-xl transition-all duration-300"
                     >
                       <span className="text-foreground font-bold text-[10px] md:text-xs text-center px-1 leading-tight">{item[lang]}</span>
                     </motion.div>
-                  </motion.div>
+                  </div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </section>
 
