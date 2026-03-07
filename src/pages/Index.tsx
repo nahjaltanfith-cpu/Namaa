@@ -150,19 +150,6 @@ const Index = () => {
          
         </section>
 
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <AnimatedSection className="text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                {lang === "ar" ? <>قصـ<span className="text-gradient-gold">تـنـا</span></> : <>Our <span className="text-gradient-gold">Story</span></>}
-              </h2>
-              <div className="w-16 h-1 rounded-full gradient-gold mx-auto mb-8" />
-              <p className="text-muted-foreground text-lg leading-loose max-w-3xl mx-auto">
-                {t.about.story[lang]}
-              </p>
-            </AnimatedSection>
-          </div>
-        </section>
 
         <section className="py-24 bg-soft">
           <div className="container mx-auto px-4">
