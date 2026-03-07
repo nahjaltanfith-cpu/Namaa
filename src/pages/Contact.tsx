@@ -6,7 +6,7 @@ import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Clock, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -57,6 +57,17 @@ const Contact = () => {
 
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 max-w-6xl">
+            {/* Purpose Banner */}
+            <AnimatedSection className="mb-12">
+              <div className="text-center p-8 rounded-3xl bg-soft border-2 border-gold/30 shadow-lg">
+                <p className="text-lg md:text-xl font-semibold text-foreground">
+                  {lang === "ar"
+                    ? "تواصل معنا لطلب العضوية أو تقديم شكوى أو اقتراح"
+                    : "Contact us for membership requests, complaints, or suggestions"}
+                </p>
+              </div>
+            </AnimatedSection>
+
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
               {/* Form */}
               <AnimatedSection direction="left" className="lg:col-span-3">
@@ -140,16 +151,14 @@ const Contact = () => {
               {/* Contact Info */}
               <AnimatedSection direction="right" className="lg:col-span-2">
                 <div className="space-y-6">
-                  <div className="p-8 rounded-3xl bg-soft border border-border">
+                  <div className="p-8 rounded-3xl bg-soft border-2 border-gold/20 shadow-xl ring-1 ring-gold/10">
                     <h3 className="text-xl font-bold text-foreground mb-8">
                       {lang === "ar" ? <>معلومات <span className="text-gradient-gold">التواصل</span></> : <><span className="text-gradient-gold">Contact</span> Information</>}
                     </h3>
                     <div className="space-y-6">
                       {[
                         { icon: Mail, label: lang === "ar" ? "البريد الإلكتروني" : "Email", value: "info@nama.org.sa" },
-                        { icon: Phone, label: lang === "ar" ? "الهاتف" : "Phone", value: "+966 XX XXX XXXX" },
-                        { icon: MapPin, label: lang === "ar" ? "العنوان" : "Address", value: lang === "ar" ? "جدة، المملكة العربية السعودية" : "Jeddah, Saudi Arabia" },
-                        { icon: Clock, label: lang === "ar" ? "أوقات العمل" : "Working Hours", value: lang === "ar" ? "الأحد - الخميس: 8 ص - 4 م" : "Sun - Thu: 8 AM - 4 PM" },
+                        { icon: MapPin, label: lang === "ar" ? "العنوان" : "Address", value: lang === "ar" ? "أبها، المملكة العربية السعودية" : "Abha, Saudi Arabia" },
                       ].map(({ icon: Icon, label, value }, i) => (
                         <motion.div key={i} whileHover={{ x: lang === "ar" ? -4 : 4 }} className="flex items-start gap-4 group">
                           <div className="w-12 h-12 rounded-xl gradient-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
@@ -180,7 +189,7 @@ const Contact = () => {
             </div>
             <div className="rounded-3xl overflow-hidden border border-border shadow-card">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59587.97785449771!2d39.15!3d21.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d01fb1137e59%3A0xe059579737b118db!2sJeddah%20Saudi%20Arabia!5e0!3m2!1sar!2ssa!4v1700000000000!5m2!1sar!2ssa"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59587.97785449771!2d42.5!3d18.22!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15fb55b530cf2c5f%3A0x3cc1b3d9f8ec2a9b!2sAbha%20Saudi%20Arabia!5e0!3m2!1sar!2ssa!4v1700000000000!5m2!1sar!2ssa"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
