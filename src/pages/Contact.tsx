@@ -88,34 +88,45 @@ const Contact = () => {
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <motion.form
+                    onSubmit={handleSubmit}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="space-y-6 p-8 md:p-10 rounded-3xl bg-soft border-2 border-gold/20 shadow-xl ring-1 ring-gold/10"
+                  >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-semibold text-foreground mb-2">{t.contact.name[lang]}</label>
-                        <input
-                          type="text"
-                          value={form.name}
-                          onChange={(e) => handleChange("name", e.target.value)}
-                          maxLength={100}
-                          className={inputClass("name")}
-                        />
-                        {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
-                      </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-foreground mb-2">{t.contact.email[lang]}</label>
-                        <input
-                          type="email"
-                          value={form.email}
-                          onChange={(e) => handleChange("email", e.target.value)}
-                          maxLength={255}
-                          className={inputClass("email")}
-                        />
-                        {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
-                      </div>
+                      {[
+                        { field: "name", label: t.contact.name[lang], type: "text", max: 100 },
+                        { field: "email", label: t.contact.email[lang], type: "email", max: 255 },
+                      ].map(({ field, label, type, max }, i) => (
+                        <motion.div
+                          key={field}
+                          initial={{ opacity: 0, x: i === 0 ? 20 : -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+                        >
+                          <label className="block text-sm font-semibold text-foreground mb-2">{label}</label>
+                          <motion.input
+                            whileFocus={{ scale: 1.01, borderColor: "hsl(var(--gold))" }}
+                            type={type}
+                            value={form[field as keyof typeof form]}
+                            onChange={(e) => handleChange(field, e.target.value)}
+                            maxLength={max}
+                            className={inputClass(field)}
+                          />
+                          {errors[field] && <p className="text-destructive text-xs mt-1">{errors[field]}</p>}
+                        </motion.div>
+                      ))}
                     </div>
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.5 }}
+                    >
                       <label className="block text-sm font-semibold text-foreground mb-2">{t.contact.subject[lang]}</label>
-                      <input
+                      <motion.input
+                        whileFocus={{ scale: 1.01 }}
                         type="text"
                         value={form.subject}
                         onChange={(e) => handleChange("subject", e.target.value)}
@@ -123,10 +134,15 @@ const Contact = () => {
                         className={inputClass("subject")}
                       />
                       {errors.subject && <p className="text-destructive text-xs mt-1">{errors.subject}</p>}
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5, duration: 0.5 }}
+                    >
                       <label className="block text-sm font-semibold text-foreground mb-2">{t.contact.message[lang]}</label>
-                      <textarea
+                      <motion.textarea
+                        whileFocus={{ scale: 1.01 }}
                         rows={6}
                         value={form.message}
                         onChange={(e) => handleChange("message", e.target.value)}
@@ -134,17 +150,24 @@ const Contact = () => {
                         className={`${inputClass("message")} resize-none`}
                       />
                       {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
-                    </div>
-                    <motion.button
-                      type="submit"
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl gradient-gold text-gold-foreground font-bold shadow-xl hover:shadow-2xl transition-shadow"
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6, duration: 0.5 }}
+                      className="flex justify-center"
                     >
-                      <Send size={18} />
-                      {t.contact.send[lang]}
-                    </motion.button>
-                  </form>
+                      <motion.button
+                        type="submit"
+                        whileHover={{ scale: 1.05, y: -3 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 px-10 py-4 rounded-2xl gradient-gold text-gold-foreground font-bold shadow-xl hover:shadow-2xl transition-shadow text-lg"
+                      >
+                        <Send size={20} />
+                        {t.contact.send[lang]}
+                      </motion.button>
+                    </motion.div>
+                  </motion.form>
                 )}
               </AnimatedSection>
 
