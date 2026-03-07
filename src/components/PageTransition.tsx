@@ -6,21 +6,9 @@ interface PageTransitionProps {
 }
 
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    filter: "blur(4px)",
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    filter: "blur(4px)",
-  },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 const PageTransition = ({ children }: PageTransitionProps) => {
