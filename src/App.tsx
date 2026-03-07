@@ -27,7 +27,7 @@ const AnimatedRoutes = () => {
       <ScrollToTop />
       <Navbar />
       <MobileBottomNav />
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync" initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
