@@ -10,11 +10,10 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Strategy from "./pages/Strategy";
-import Areas from "./pages/Areas";
+import Governance from "./pages/Governance";
+import Beneficiaries from "./pages/Beneficiaries";
+import Reports from "./pages/Reports";
 import Projects from "./pages/Projects";
-import Partnerships from "./pages/Partnerships";
-import Impact from "./pages/Impact";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
