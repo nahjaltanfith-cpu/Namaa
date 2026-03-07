@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
@@ -21,18 +22,60 @@ const navItems = [
   { key: "contact", href: "/contact", icon: Phone },
 ] as const;
 
+const BASE_BOTTOM_OFFSET = 12;
+
+const getViewportBottomOffset = () => {
+  if (typeof window === "undefined") return BASE_BOTTOM_OFFSET;
+
+  const viewport = window.visualViewport;
+  if (!viewport) return BASE_BOTTOM_OFFSET;
+
+  const dynamicInset = Math.max(
+    0,
+    window.innerHeight - (viewport.height + viewport.offsetTop)
+  );
+
+  return Math.round(BASE_BOTTOM_OFFSET + dynamicInset);
+};
+
 const MobileBottomNav = () => {
   const { lang, t } = useLang();
   const location = useLocation();
+  const [bottomOffset, setBottomOffset] = useState(BASE_BOTTOM_OFFSET);
+
+  useEffect(() => {
+    let rafId: number | null = null;
+
+    const syncOffset = () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        setBottomOffset(getViewportBottomOffset());
+      });
+    };
+
+    syncOffset();
+
+    const viewport = window.visualViewport;
+    viewport?.addEventListener("resize", syncOffset);
+    viewport?.addEventListener("scroll", syncOffset);
+    window.addEventListener("resize", syncOffset);
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      viewport?.removeEventListener("resize", syncOffset);
+      viewport?.removeEventListener("scroll", syncOffset);
+      window.removeEventListener("resize", syncOffset);
+    };
+  }, []);
 
   const isActive = (href: string) => location.pathname === href;
 
   return (
     <nav
-      className="fixed inset-x-0 z-[120] lg:hidden flex justify-center px-3"
-      style={{ bottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+      className="fixed left-1/2 -translate-x-1/2 z-[140] lg:hidden w-[min(92vw,32rem)]"
+      style={{ bottom: `${bottomOffset}px` }}
     >
-      <div className="w-[92%] max-w-lg bg-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.1)] border border-gray-100">
+      <div className="w-full bg-card/95 backdrop-blur-2xl rounded-3xl shadow-card border border-border">
         <div className="flex items-center justify-between px-3 py-3">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -43,32 +86,31 @@ const MobileBottomNav = () => {
               <Link
                 key={item.href}
                 to={item.href}
-                className="relative flex flex-col items-center gap-1.5 min-w-0 px-1 group"
+                aria-label={label}
+                className="relative flex-1 flex flex-col items-center gap-1.5 min-w-0 px-1 group"
               >
-                {/* Icon circle */}
                 <div className="relative flex items-center justify-center">
                   {active && (
                     <motion.div
                       layoutId="mobileActiveTab"
-                      className="absolute w-11 h-11 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 shadow-lg shadow-amber-500/30"
-                      transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                      className="absolute w-11 h-11 rounded-full gradient-gold shadow-lg"
+                      transition={{ type: "tween", duration: 0.18, ease: "easeOut" }}
                     />
                   )}
                   <div
-                    className={`relative z-10 w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300 ${
+                    className={`relative z-10 w-11 h-11 flex items-center justify-center rounded-full transition-all duration-200 ${
                       active
-                        ? "text-white"
-                        : "text-gray-500 group-hover:text-amber-500 group-hover:bg-amber-50/60"
+                        ? "text-gold-foreground"
+                        : "text-muted-foreground group-hover:text-accent group-hover:bg-accent/10"
                     }`}
                   >
-                    <Icon size={active ? 20 : 19} strokeWidth={active ? 2.5 : 2} />
+                    <Icon size={19} strokeWidth={active ? 2.5 : 2} />
                   </div>
                 </div>
 
-                {/* Label */}
                 <span
-                  className={`text-[9px] leading-tight font-extrabold max-w-[48px] text-center whitespace-normal transition-colors duration-300 ${
-                    active ? "text-amber-600" : "text-gray-800"
+                  className={`text-[9px] leading-tight font-extrabold max-w-[48px] text-center whitespace-normal transition-colors duration-200 ${
+                    active ? "text-primary" : "text-foreground"
                   }`}
                 >
                   {label}
@@ -83,3 +125,4 @@ const MobileBottomNav = () => {
 };
 
 export default MobileBottomNav;
+
