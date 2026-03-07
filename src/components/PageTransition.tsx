@@ -30,7 +30,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.15, ease: "easeOut" }}
       className="pb-24 lg:pb-0"
     >
       {children}
