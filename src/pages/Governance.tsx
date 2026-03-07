@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
+import PdfViewer from "@/components/PdfViewer";
 import { motion } from "framer-motion";
 import { Shield, Users, FileCheck, Scale, Eye } from "lucide-react";
 
