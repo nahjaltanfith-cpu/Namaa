@@ -2,23 +2,18 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
-import { ArrowDown, ArrowLeft, ArrowRight, Eye, Target, Shield, HeartHandshake, Star, Users, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
-import AnimatedSection, { useCounter } from "@/components/AnimatedSection";
+import { ArrowLeft, ArrowRight, Eye, Target, ChevronLeft, ChevronRight, Zap, Rocket, Puzzle, TrendingUp, Coins } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-import logo from "../../public/logo.png"
+import logo from "/logo.png";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
-import member1 from "@/assets/member-1.jpg";
-import member2 from "@/assets/member-2.jpg";
-import member3 from "@/assets/member-3.jpg";
-import member4 from "@/assets/member-4.jpg";
-import member5 from "@/assets/member-5.jpg";
 
 const heroImages = [hero1, hero2, hero3];
-const memberImages = [member1, member2, member3, member4, member5];
+const directionIcons = [Zap, Rocket, Puzzle, TrendingUp, Coins];
 
 const Index = () => {
   const { lang, t } = useLang();
