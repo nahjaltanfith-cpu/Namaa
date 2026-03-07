@@ -91,8 +91,8 @@ export const translations = {
       { ar: "فريق متخصص ومؤهل", en: "Specialized and qualified team" },
     ],
     story: {
-      ar: "مؤسسة أهلية تأسست في عام 1442هـ وتحمل رقم تسجيل (1047)، تهدف لتكون لبنة تسهم في تنمية القطاع غير الربحي وفقاً لرؤية المملكة 2030، ولتصبح رافداً في تطوير ممكنات القطاع.",
-      en: "A civil institution established in 1442H with registration number (1047), aiming to contribute to the development of the non-profit sector in accordance with the Kingdom's Vision 2030.",
+      ar: "مؤسسة أهلية تأسست في عام 1445هـ وتحمل رقم تسجيل (1047)، تهدف لتكون لبنة تسهم في تنمية القطاع غير الربحي وفقاً لرؤية المملكة 2030، ولتصبح رافداً في تطوير ممكنات القطاع.",
+      en: "A civil institution established in 1445H with registration number (1047), aiming to contribute to the development of the non-profit sector in accordance with the Kingdom's Vision 2030.",
     },
     strategicDirections: {
       title: { ar: "التوجهات الاستراتيجية", en: "Strategic Directions" },
