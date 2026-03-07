@@ -28,7 +28,7 @@ const Navbar = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <header className="fixed top-0 inset-x-0 z-[100] pointer-events-none">
+    <header className="fixed top-0 inset-x-0 z-[100] pointer-events-none hidden lg:block">
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
