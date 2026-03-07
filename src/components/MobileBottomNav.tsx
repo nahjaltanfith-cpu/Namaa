@@ -28,7 +28,10 @@ const MobileBottomNav = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed bottom-3 inset-x-0 z-[100] lg:hidden flex justify-center px-3">
+    <nav
+      className="fixed inset-x-0 z-[120] lg:hidden flex justify-center px-3"
+      style={{ bottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
+    >
       <div className="w-[92%] max-w-lg bg-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.1)] border border-gray-100">
         <div className="flex items-center justify-between px-3 py-3">
           {navItems.map((item) => {

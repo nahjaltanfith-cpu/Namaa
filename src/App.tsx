@@ -27,18 +27,16 @@ const AnimatedRoutes = () => {
       <ScrollToTop />
       <Navbar />
       <MobileBottomNav />
-      <AnimatePresence mode="sync" initial={false}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/governance" element={<Governance />} />
-          <Route path="/beneficiaries" element={<Beneficiaries />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AnimatePresence>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Index />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/governance" element={<Governance />} />
+        <Route path="/beneficiaries" element={<Beneficiaries />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 };
