@@ -28,9 +28,9 @@ const MobileBottomNav = () => {
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed bottom-4 inset-x-0 z-[100] lg:hidden flex justify-center px-4">
-      <div className="w-[85%] max-w-md bg-white/80 backdrop-blur-2xl rounded-2xl shadow-[0_8px_40px_rgba(0,0,0,0.12),0_2px_8px_rgba(0,0,0,0.08)] border border-white/60">
-        <div className="flex items-center justify-around px-2 py-2.5">
+    <nav className="fixed bottom-3 inset-x-0 z-[100] lg:hidden flex justify-center px-3">
+      <div className="w-[92%] max-w-lg bg-white/95 backdrop-blur-2xl rounded-3xl shadow-[0_10px_50px_rgba(0,0,0,0.15),0_4px_12px_rgba(0,0,0,0.1)] border border-gray-100">
+        <div className="flex items-center justify-between px-3 py-3">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = isActive(item.href);
@@ -40,45 +40,36 @@ const MobileBottomNav = () => {
               <Link
                 key={item.href}
                 to={item.href}
-                className="relative flex flex-col items-center gap-0.5 min-w-0 flex-1 group"
+                className="relative flex flex-col items-center gap-1.5 min-w-0 px-1 group"
               >
-                {/* Active background circle */}
+                {/* Icon circle */}
                 <div className="relative flex items-center justify-center">
                   {active && (
                     <motion.div
                       layoutId="mobileActiveTab"
-                      className="absolute inset-0 w-10 h-10 -m-1 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 shadow-lg shadow-amber-500/30"
+                      className="absolute w-11 h-11 rounded-full bg-gradient-to-br from-amber-500 to-amber-600 shadow-lg shadow-amber-500/30"
                       transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                     />
                   )}
                   <div
-                    className={`relative z-10 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 ${
+                    className={`relative z-10 w-11 h-11 flex items-center justify-center rounded-full transition-all duration-300 ${
                       active
-                        ? "text-white scale-105"
-                        : "text-gray-400 group-hover:text-amber-500 group-hover:bg-amber-50"
+                        ? "text-white"
+                        : "text-gray-500 group-hover:text-amber-500 group-hover:bg-amber-50/60"
                     }`}
                   >
-                    <Icon size={active ? 18 : 16} strokeWidth={active ? 2.5 : 1.8} />
+                    <Icon size={active ? 20 : 19} strokeWidth={active ? 2.5 : 2} />
                   </div>
                 </div>
 
                 {/* Label */}
                 <span
-                  className={`text-[9px] leading-tight font-bold truncate max-w-[48px] text-center transition-colors duration-300 ${
-                    active ? "text-amber-600" : "text-gray-400 group-hover:text-amber-500"
+                  className={`text-[10px] leading-none font-extrabold truncate max-w-[52px] text-center transition-colors duration-300 ${
+                    active ? "text-amber-600" : "text-gray-800"
                   }`}
                 >
                   {label}
                 </span>
-
-                {/* Active dot indicator */}
-                {active && (
-                  <motion.div
-                    layoutId="mobileActiveDot"
-                    className="absolute -bottom-1 w-1 h-1 rounded-full bg-amber-500"
-                    transition={{ type: "spring", bounce: 0.3, duration: 0.5 }}
-                  />
-                )}
               </Link>
             );
           })}
