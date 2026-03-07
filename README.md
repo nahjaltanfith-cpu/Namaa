@@ -48,13 +48,12 @@ npm install
 Bash
 npm run dev
  هيكلة المجلدات (Folder Structure)
-Plaintext
 src/
  ├── assets/             # الصور والملفات الوسائطية (hero background, images)
  ├── components/         # المكونات البرمجية (Navbar, Footer, AnimatedSection)
  ├── i18n/               # ملفات الترجمة والسياق (LanguageContext)
  ├── pages/              # الصفحات (Home, About, Governance, etc.)
- └── main.tsx            # نقطة انطلاق التطبيق
+ └── main.tsx            # نقطة انطلاق التطبيقنقطة انطلاق التطبيق
  النشر (Deployment)
 الموقع مرفوع حالياً عبر منصة Netlify:
 رابط المعاينة: https://namaa2.netlify.app/
