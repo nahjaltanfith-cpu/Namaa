@@ -6,21 +6,9 @@ interface PageTransitionProps {
 }
 
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 20,
-    filter: "blur(4px)",
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-  },
-  exit: {
-    opacity: 0,
-    y: -20,
-    filter: "blur(4px)",
-  },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 const PageTransition = ({ children }: PageTransitionProps) => {
@@ -30,7 +18,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.15, ease: "easeOut" }}
       className="pb-24 lg:pb-0"
     >
       {children}
