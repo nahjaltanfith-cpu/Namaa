@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+# 🌿 جمعية نماء لتنمية القطاع غير الربحي | Nama Association
 
-## Project info
+![Nama Association Logo](https://namaa2.netlify.app/logo.png)
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**جمعية أهلية سعودية مرخصة برقم (1000567200)، تسعى لتكون ركيزة أساسية في تنمية القطاع الثالث بما يتوافق مع رؤية المملكة 2030.**
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 عن المشروع (About the Project)
+موقع تعريفي عصري وتفاعلي لجمعية نماء، تم تصميمه بأسلوب "مستقبلي" يجمع بين الاحترافية والابتكار. يهدف الموقع إلى عرض رؤية ورسالة وأهداف الجمعية، والتعريف بممكنات القطاع غير الربحي بأسلوب تقني متطور.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## ✨ المميزات (Features)
+- **🌍 دعم لغتين (i18n):** دعم كامل ومباشر للغتين العربية والإنجليزية مع مراعاة اتجاهات التصميم (RTL/LTR).
+- **🎨 هوية بصرية عصرية:** استخدام باليت ألوان (الأخضر والذهبي/البرتقالي) مستوحاة من الهيئة الرسمية للجمعية مع لمسات مودرن.
+- **🎬 تجربة مستخدم تفاعلية:** تحريك العناصر بذكاء عند التمرير باستخدام مكتبة `Framer Motion`.
+- **📱 Responsive Design:** تصميم مرن يتناسب مع كافة مقاسات الشاشات والهواتف الذكية.
+- **SEO & Social Sharing:** الموقع مهيأ بالكامل لظهور اللوجو والبيانات التعريفية عند مشاركة الرابط على واتساب ومنصات التواصل.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🛠 التقنيات المستخدمة (Tech Stack)
+- **React.js** (v18+)
+- **TypeScript**
+- **Tailwind CSS** (Styling)
+- **Framer Motion** (Animations)
+- **Lucide React** (Icons)
+- **Vite** (Build Tool)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## ⚙️ التثبيت والتشغيل (Setup & Installation)
 
-Follow these steps:
+لتشغيل المشروع محلياً، اتبع الخطوات التالية:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **عمل Clone للمشروع:**
+   ```bash
+   git clone [https://github.com/your-username/namaa-association.git](https://github.com/your-username/namaa-association.git)
+  '''
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+   تثبيت المكتبات:
 
-# Step 3: Install the necessary dependencies.
-npm i
+Bash
+npm install
+تشغيل الموقع:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Bash
 npm run dev
-```
+ هيكلة المجلدات (Folder Structure)
+Plaintext
+src/
+ ├── assets/             # الصور والملفات الوسائطية (hero background, images)
+ ├── components/         # المكونات البرمجية (Navbar, Footer, AnimatedSection)
+ ├── i18n/               # ملفات الترجمة والسياق (LanguageContext)
+ ├── pages/              # الصفحات (Home, About, Governance, etc.)
+ └── main.tsx            # نقطة انطلاق التطبيق
+ النشر (Deployment)
+الموقع مرفوع حالياً عبر منصة Netlify:
+رابط المعاينة: https://namaa2.netlify.app/
 
-**Edit a file directly in GitHub**
+ الترخيص (License)
+جميع الحقوق محفوظة © لعام 2026 لجمعية نماء لتنمية القطاع غير الربحي.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+ تم تطوير هذا الموقع ليعكس التحول الرقمي في القطاع غير الربحي بالمملكة.
 
-**Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
