@@ -189,7 +189,7 @@ const Contact = () => {
             </div>
             <div className="rounded-3xl overflow-hidden border border-border shadow-card">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59587.97785449771!2d39.15!3d21.54!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d01fb1137e59%3A0xe059579737b118db!2sJeddah%20Saudi%20Arabia!5e0!3m2!1sar!2ssa!4v1700000000000!5m2!1sar!2ssa"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59587.97785449771!2d42.5!3d18.22!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15fb55b530cf2c5f%3A0x3cc1b3d9f8ec2a9b!2sAbha%20Saudi%20Arabia!5e0!3m2!1sar!2ssa!4v1700000000000!5m2!1sar!2ssa"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
