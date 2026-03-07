@@ -10,11 +10,10 @@ import MobileBottomNav from "@/components/MobileBottomNav";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Strategy from "./pages/Strategy";
-import Areas from "./pages/Areas";
+import Governance from "./pages/Governance";
+import Beneficiaries from "./pages/Beneficiaries";
+import Reports from "./pages/Reports";
 import Projects from "./pages/Projects";
-import Partnerships from "./pages/Partnerships";
-import Impact from "./pages/Impact";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -31,11 +30,10 @@ const AnimatedRoutes = () => {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
-          <Route path="/strategy" element={<Strategy />} />
-          <Route path="/areas" element={<Areas />} />
+          <Route path="/governance" element={<Governance />} />
+          <Route path="/beneficiaries" element={<Beneficiaries />} />
+          <Route path="/reports" element={<Reports />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/partnerships" element={<Partnerships />} />
-          <Route path="/impact" element={<Impact />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

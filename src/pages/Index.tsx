@@ -347,13 +347,13 @@ const Index = () => {
                     {t.nav.contact[lang]}
                   </motion.span>
                 </Link>
-                <Link to="/partnerships" className="w-full sm:w-auto">
+                <Link to="/contact" className="w-full sm:w-auto">
                   <motion.span
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full border-2 border-gold/20 text-foreground font-bold hover:bg-gold/5 transition-all duration-300"
                   >
-                    {t.nav.partnerships[lang]}
+                    {t.nav.contact[lang]}
                   </motion.span>
                 </Link>
               </div>

@@ -4,11 +4,10 @@ export const translations = {
   nav: {
     home: { ar: "الرئيسية", en: "Home" },
     about: { ar: "عن الجمعية", en: "About Us" },
-    strategy: { ar: "الاستراتيجية", en: "Strategy" },
-    areas: { ar: "مجالات العمل", en: "Work Areas" },
+    governance: { ar: "الحوكمة", en: "Governance" },
+    beneficiaries: { ar: "المستفيدين", en: "Beneficiaries" },
+    reports: { ar: "التقارير", en: "Reports" },
     projects: { ar: "المشاريع", en: "Projects" },
-    partnerships: { ar: "الشراكات", en: "Partnerships" },
-    impact: { ar: "الأثر والتقارير", en: "Impact & Reports" },
     contact: { ar: "تواصل معنا", en: "Contact Us" },
   },
   hero: {

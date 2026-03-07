@@ -4,22 +4,20 @@ import { motion } from "framer-motion";
 import {
   Home,
   Info,
-  Target,
-  Layers,
+  Shield,
+  Users,
+  FileText,
   FolderOpen,
-  Handshake,
-  BarChart3,
   Phone,
 } from "lucide-react";
 
 const navItems = [
   { key: "home", href: "/", icon: Home },
   { key: "about", href: "/about", icon: Info },
-  { key: "strategy", href: "/strategy", icon: Target },
-  { key: "areas", href: "/areas", icon: Layers },
+  { key: "governance", href: "/governance", icon: Shield },
+  { key: "beneficiaries", href: "/beneficiaries", icon: Users },
+  { key: "reports", href: "/reports", icon: FileText },
   { key: "projects", href: "/projects", icon: FolderOpen },
-  { key: "partnerships", href: "/partnerships", icon: Handshake },
-  { key: "impact", href: "/impact", icon: BarChart3 },
   { key: "contact", href: "/contact", icon: Phone },
 ] as const;
 
