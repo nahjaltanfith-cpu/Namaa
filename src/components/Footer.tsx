@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { Mail, Phone, MapPin, ChevronRight, ChevronLeft } from "lucide-react";
+import { Mail, MapPin, ChevronRight, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import logo from "../../public/logo.png";
 
@@ -67,9 +67,8 @@ const Footer = () => {
             </h4>
             <div className="flex flex-col gap-5">
               {[
-                { icon: Mail, text: t.footer.email[lang] },
-                { icon: Phone, text: t.footer.phone[lang] },
-                { icon: MapPin, text: lang === "ar" ? "المملكة العربية السعودية" : "Saudi Arabia" },
+                { icon: Mail, text: "info@nama.org.sa" },
+                { icon: MapPin, text: lang === "ar" ? "أبها، المملكة العربية السعودية" : "Abha, Saudi Arabia" },
               ].map(({ icon: Icon, text }, i) => (
                 <div key={i} className="flex items-center gap-4 group cursor-pointer">
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-amber-500/10 group-hover:border-amber-500/30 transition-all duration-300 shadow-lg">
