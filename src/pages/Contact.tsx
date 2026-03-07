@@ -6,7 +6,7 @@ import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Clock, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
