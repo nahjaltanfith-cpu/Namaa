@@ -64,7 +64,7 @@ const MobileBottomNav = () => {
 
                 {/* Label */}
                 <span
-                  className={`text-[10px] leading-none font-extrabold truncate max-w-[52px] text-center transition-colors duration-300 ${
+                  className={`text-[9px] leading-tight font-extrabold max-w-[48px] text-center whitespace-normal transition-colors duration-300 ${
                     active ? "text-amber-600" : "text-gray-800"
                   }`}
                 >
