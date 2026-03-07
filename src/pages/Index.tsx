@@ -151,33 +151,43 @@ const Index = () => {
         </section>
 
 
-        <section className="py-24 bg-soft">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-              <AnimatedSection direction="left">
-                <div className="group p-10 rounded-3xl bg-background border border-border hover:shadow-card-hover transition-all duration-500 text-center h-full">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-primary mb-6 group-hover:scale-110 transition-all duration-500">
-                    <Eye className="text-primary-foreground" size={28} />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{t.vision.title[lang]}</h2>
-                  <div className="w-12 h-1 rounded-full gradient-gold mx-auto mb-5 group-hover:w-24 transition-all duration-500" />
-                  <p className="text-muted-foreground text-lg leading-relaxed">{t.vision.text[lang]}</p>
-                </div>
-              </AnimatedSection>
-
-              <AnimatedSection direction="right">
-                <div className="group p-10 rounded-3xl bg-background border border-border hover:shadow-card-hover transition-all duration-500 text-center h-full">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-gold mb-6 group-hover:scale-110 transition-all duration-500">
-                    <Target className="text-gold-foreground" size={28} />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{t.mission.title[lang]}</h2>
-                  <div className="w-12 h-1 rounded-full gradient-gold mx-auto mb-5 group-hover:w-24 transition-all duration-500" />
-                  <p className="text-muted-foreground text-lg leading-relaxed">{t.mission.text[lang]}</p>
-                </div>
-              </AnimatedSection>
+<section className="py-24 bg-soft">
+  <div className="container mx-auto px-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+      <AnimatedSection direction="left">
+        <div className="relative group p-10 rounded-3xl bg-background border border-border hover:shadow-card-hover transition-all duration-500 text-center h-full overflow-hidden">
+          <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-primary rounded-tr-3xl transition-all duration-700 ease-in-out group-hover:w-full group-hover:h-full group-hover:rounded-3xl pointer-events-none z-10" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-primary rounded-bl-3xl transition-all duration-700 ease-in-out group-hover:w-full group-hover:h-full group-hover:rounded-3xl pointer-events-none z-10" />
+          
+          <div className="relative z-20">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-primary mb-6 group-hover:scale-110 transition-all duration-500">
+              <Eye className="text-primary-foreground" size={28} />
             </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{t.vision.title[lang]}</h2>
+            <div className="w-12 h-1 rounded-full gradient-primary mx-auto mb-5 group-hover:w-24 transition-all duration-500" />
+            <p className="text-muted-foreground text-lg leading-relaxed">{t.vision.text[lang]}</p>
           </div>
-        </section>
+        </div>
+      </AnimatedSection>
+
+      <AnimatedSection direction="right">
+        <div className="relative group p-10 rounded-3xl bg-background border border-border hover:shadow-card-hover transition-all duration-500 text-center h-full overflow-hidden">
+          <div className="absolute top-0 right-0 w-20 h-20 border-t-4 border-r-4 border-orange-400 rounded-tr-3xl transition-all duration-700 ease-in-out group-hover:w-full group-hover:h-full group-hover:rounded-3xl pointer-events-none z-10" />
+          <div className="absolute bottom-0 left-0 w-20 h-20 border-b-4 border-l-4 border-orange-400 rounded-bl-3xl transition-all duration-700 ease-in-out group-hover:w-full group-hover:h-full group-hover:rounded-3xl pointer-events-none z-10" />
+          
+          <div className="relative z-20">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl gradient-gold mb-6 group-hover:scale-110 transition-all duration-500">
+              <Target className="text-white" size={28} />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">{t.mission.title[lang]}</h2>
+            <div className="w-12 h-1 rounded-full gradient-gold mx-auto mb-5 group-hover:w-24 transition-all duration-500" />
+            <p className="text-muted-foreground text-lg leading-relaxed">{t.mission.text[lang]}</p>
+          </div>
+        </div>
+      </AnimatedSection>
+    </div>
+  </div>
+</section>
 
         {/* Values - Star Shape */}
         <section className="py-24 bg-background overflow-hidden">
