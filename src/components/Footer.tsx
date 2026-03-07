@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
-import { Mail, Phone, MapPin, ChevronRight, ChevronLeft } from "lucide-react";
+import { Mail, MapPin, ChevronRight, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import logo from "../../public/logo.png";
 
