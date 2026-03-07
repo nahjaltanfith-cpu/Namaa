@@ -85,9 +85,6 @@ const MobileBottomNav = () => {
             );
           })}
         </div>
-
-        {/* Safe area for iPhone notch */}
-        <div className="h-[env(safe-area-inset-bottom)]" />
       </div>
     </nav>
   );
