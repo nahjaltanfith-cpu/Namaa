@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useLang } from "@/i18n/LanguageContext";
 import { Mail, MapPin, ChevronRight, ChevronLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import logo from "../../public/logo.png";
+import logo from "/logo.png";
 
 const Footer = () => {
   const { lang, t } = useLang();
