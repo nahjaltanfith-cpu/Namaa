@@ -17,11 +17,10 @@ const Navbar = () => {
   const navItems = [
     { label: t.nav.home[lang], href: "/" },
     { label: t.nav.about[lang], href: "/about" },
-    { label: t.nav.strategy[lang], href: "/strategy" },
-    { label: t.nav.areas[lang], href: "/areas" },
+    { label: t.nav.governance[lang], href: "/governance" },
+    { label: t.nav.beneficiaries[lang], href: "/beneficiaries" },
+    { label: t.nav.reports[lang], href: "/reports" },
     { label: t.nav.projects[lang], href: "/projects" },
-    { label: t.nav.partnerships[lang], href: "/partnerships" },
-    { label: t.nav.impact[lang], href: "/impact" },
     { label: t.nav.contact[lang], href: "/contact" },
   ];
 
