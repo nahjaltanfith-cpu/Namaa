@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
-import { FileCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { FileCheck, Download } from "lucide-react";
 
 const DRIVE_PDF_EMBED = "https://drive.google.com/file/d/1_r3hP7G4RkYdjQDXZX4PIZEdBXcaXBQA/preview";
 
