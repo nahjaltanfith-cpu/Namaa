@@ -57,6 +57,17 @@ const Contact = () => {
 
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 max-w-6xl">
+            {/* Purpose Banner */}
+            <AnimatedSection className="mb-12">
+              <div className="text-center p-8 rounded-3xl bg-soft border-2 border-gold/30 shadow-lg">
+                <p className="text-lg md:text-xl font-semibold text-foreground">
+                  {lang === "ar"
+                    ? "تواصل معنا لطلب العضوية أو تقديم شكوى أو اقتراح"
+                    : "Contact us for membership requests, complaints, or suggestions"}
+                </p>
+              </div>
+            </AnimatedSection>
+
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
               {/* Form */}
               <AnimatedSection direction="left" className="lg:col-span-3">
