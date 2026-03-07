@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import PageHero from "@/components/PageHero";
 import AnimatedSection from "@/components/AnimatedSection";
+import PdfViewer from "@/components/PdfViewer";
 import { motion } from "framer-motion";
 import { Shield, Users, FileCheck, Scale, Eye } from "lucide-react";
 
@@ -92,13 +93,10 @@ const Governance = () => {
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
-              <div className="rounded-2xl border border-border bg-card shadow-lg overflow-hidden">
-                <iframe
-                  src="/documents/basic-regulations.pdf"
-                  className="w-full h-[700px] md:h-[850px]"
-                  title={lang === "ar" ? "اللائحة الأساسية" : "Basic Regulations"}
-                />
-              </div>
+              <PdfViewer
+                url="/documents/basic-regulations.pdf"
+                title={lang === "ar" ? "اللائحة الأساسية" : "Basic Regulations"}
+              />
             </AnimatedSection>
           </div>
         </section>
