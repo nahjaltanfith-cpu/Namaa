@@ -91,7 +91,7 @@ export const translations = {
       { ar: "فريق متخصص ومؤهل", en: "Specialized and qualified team" },
     ],
     story: {
-  ar: "جمعية أهلية تأسست في عام 1445هـ وتحمل رقم ترخيص (1000567200)، تهدف لتكون لبنة تسهم في تنمية القطاع غير الربحي وفقاً لرؤية المملكة 2030، ولتصبح رافداً في تطوير ممكنات القطاع.",
+  ar: "جمعية أهلية تأسست في عام 1445هـ وتحمل رقم ترخيص (1000567200)، تعمل على تنمية القطاع غير الربحي وفقاً لرؤية المملكة 2030، ولتصبح رافداً في تطوير ممكنات القطاع.",
   en: "Founded in 1445 AH under license No. 1000567200, our association serves as a foundational pillar for the non-profit sector's growth. In alignment with Saudi Vision 2030, we strive to be a key resource in advancing the sector and enhancing its developmental enablers.",
 },
     strategicDirections: {
