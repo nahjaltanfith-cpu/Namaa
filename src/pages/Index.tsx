@@ -2,23 +2,18 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/i18n/LanguageContext";
-import { ArrowDown, ArrowLeft, ArrowRight, Eye, Target, Shield, HeartHandshake, Star, Users, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
-import AnimatedSection, { useCounter } from "@/components/AnimatedSection";
+import { ArrowLeft, ArrowRight, Eye, Target, ChevronLeft, ChevronRight, Zap, Rocket, Puzzle, TrendingUp, Coins } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
 
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-import logo from "../../public/logo.png"
+import logo from "/logo.png";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
-import member1 from "@/assets/member-1.jpg";
-import member2 from "@/assets/member-2.jpg";
-import member3 from "@/assets/member-3.jpg";
-import member4 from "@/assets/member-4.jpg";
-import member5 from "@/assets/member-5.jpg";
 
 const heroImages = [hero1, hero2, hero3];
-const memberImages = [member1, member2, member3, member4, member5];
+const directionIcons = [Zap, Rocket, Puzzle, TrendingUp, Coins];
 
 const Index = () => {
   const { lang, t } = useLang();
@@ -197,7 +192,8 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-24 bg-background">
+        {/* Values - Star Shape */}
+        <section className="py-24 bg-background overflow-hidden">
           <div className="container mx-auto px-4">
             <AnimatedSection className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
@@ -205,23 +201,109 @@ const Index = () => {
               </h2>
               <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
             </AnimatedSection>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+
+            <div className="relative max-w-xl mx-auto aspect-square flex items-center justify-center">
+              {/* Center Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
+                className="absolute z-10 w-28 h-28 md:w-36 md:h-36 rounded-full gradient-gold flex items-center justify-center shadow-[0_0_40px_rgba(212,175,55,0.3)]"
+              >
+                <img src={logo} alt="Nama" className="w-16 h-16 md:w-24 md:h-24 object-contain" />
+              </motion.div>
+
+              {/* Star Values */}
               {t.values.items.map((item, i) => {
-                const icons = [Shield, HeartHandshake, Star, Users, Lightbulb];
-                const Icon = icons[i];
+                const total = t.values.items.length;
+                const angle = (i * 360) / total - 90;
+                const radius = 42;
+                const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
+                const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
+
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ type: "spring", stiffness: 120, delay: 0.1 * i + 0.5 }}
+                    className="absolute"
+                    style={{
+                      left: `${x}%`,
+                      top: `${y}%`,
+                      transform: "translate(-50%, -50%)",
+                    }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.15, y: -4 }}
+                      className="flex flex-col items-center gap-2"
+                    >
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-soft border-2 border-gold/20 shadow-xl flex items-center justify-center hover:border-gold/50 transition-all duration-300">
+                        <span className="text-foreground font-bold text-xs md:text-sm text-center px-1 leading-tight">{item[lang]}</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+
+              {/* Connecting Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100">
+                {t.values.items.map((_, i) => {
+                  const total = t.values.items.length;
+                  const angle = (i * 360) / total - 90;
+                  const radius = 42;
+                  const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
+                  const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
+                  return (
+                    <motion.line
+                      key={i}
+                      x1="50" y1="50" x2={x} y2={y}
+                      stroke="hsl(var(--gold))"
+                      strokeWidth="0.3"
+                      strokeDasharray="2 2"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      whileInView={{ pathLength: 1, opacity: 0.4 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.1 * i + 0.3 }}
+                    />
+                  );
+                })}
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        {/* Strategic Directions */}
+        <section className="py-24 bg-soft">
+          <div className="container mx-auto px-4">
+            <AnimatedSection className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                {lang === "ar" ? <>التوجهات <span className="text-gradient-gold">الاستراتيجية</span></> : <>Strategic <span className="text-gradient-gold">Directions</span></>}
+              </h2>
+              <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
+            </AnimatedSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {t.directions.items.map((item, i) => {
+                const Icon = directionIcons[i];
                 return (
                   <AnimatedSection key={i} delay={i * 0.1}>
                     <motion.div
-                      whileHover={{ y: -8, scale: 1.03 }}
-                      className="group flex flex-col items-center text-center p-7 rounded-2xl bg-soft border border-border shadow-card hover:shadow-card-hover transition-all duration-300"
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      className="group relative p-8 rounded-2xl border border-border bg-background hover:shadow-card-hover transition-all duration-500 overflow-hidden"
                     >
-                      <motion.div
-                        whileHover={{ rotate: 10 }}
-                        className="w-14 h-14 rounded-xl gradient-gold flex items-center justify-center mb-4"
-                      >
-                        <Icon className="text-gold-foreground" size={24} />
-                      </motion.div>
-                      <h3 className="font-bold text-foreground text-sm">{item[lang]}</h3>
+                      <div className="absolute top-0 start-0 w-1 h-full gradient-gold rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl gradient-gold flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                          <Icon className="text-gold-foreground" size={22} />
+                        </div>
+                        <div>
+                          <span className="text-xs font-bold text-gold mb-2 block">0{i + 1}</span>
+                          <p className="text-foreground font-semibold text-sm leading-relaxed">{item[lang]}</p>
+                        </div>
+                      </div>
                     </motion.div>
                   </AnimatedSection>
                 );
@@ -230,102 +312,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-24 bg-soft">
-          <div className="container mx-auto px-4">
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                {lang === "ar" ? <>مجلس <span className="text-gradient-gold">الأمناء</span></> : <>Board of <span className="text-gradient-gold">Trustees</span></>}
-              </h2>
-              <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
-            </AnimatedSection>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-              {t.board.members.map((member, i) => (
-                <AnimatedSection key={i} delay={i * 0.1}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="group text-center"
-                  >
-                    <div className="relative mb-4 mx-auto w-32 h-32 rounded-full overflow-hidden border-4 border-gold/30 group-hover:border-gold/60 transition-all duration-500 shadow-lg">
-                      <img
-                        src={memberImages[i]}
-                        alt={member.name[lang]}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <h3 className="font-bold text-foreground text-sm mb-1">{member.name[lang]}</h3>
-                    <p className="text-gold text-xs font-semibold">{member.role[lang]}</p>
-                  </motion.div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-4">
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                {lang === "ar" ? <>فريق <span className="text-gradient-gold">العمل</span></> : <>Our <span className="text-gradient-gold">Team</span></>}
-              </h2>
-              <div className="w-16 h-1 rounded-full gradient-gold mx-auto" />
-            </AnimatedSection>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-              {t.team.members.map((member, i) => (
-                <AnimatedSection key={i} delay={i * 0.1}>
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="group text-center p-6 rounded-2xl bg-soft border border-border hover:shadow-card-hover transition-all duration-300"
-                  >
-                    <div className="relative mb-4 mx-auto w-28 h-28 rounded-2xl overflow-hidden shadow-md">
-                      <img
-                        src={memberImages[i]}
-                        alt={member.name[lang]}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <h3 className="font-bold text-foreground text-sm mb-1">{member.name[lang]}</h3>
-                    <p className="text-gold text-xs font-semibold">{member.role[lang]}</p>
-                  </motion.div>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-        </section>
-
-       <section 
-  className="relative py-24 text-primary-foreground overflow-hidden bg-fixed bg-center bg-cover"
-  style={{ backgroundImage: `url(${hero1})` }}
->
-  <div className="absolute inset-0 bg-black/80 backdrop-blur-[2px]" />
-  
-  <div className="container mx-auto px-4 relative z-10">
-    <AnimatedSection className="text-center mb-16">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
-        {lang === "ar" ? <>أثرنا <span className="text-gradient-gold">بالأرقام</span></> : <>Our Impact <span className="text-gradient-gold">in Numbers</span></>}
-      </h2>
-      <div className="w-16 h-1 rounded-full gradient-gold mx-auto shadow-[0_0_15px_rgba(212,175,55,0.4)]" />
-    </AnimatedSection>
-    
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-      {t.impact.items.map((item, i) => (
-        <CounterCard key={i} value={item.value} label={item.label[lang]} delay={i * 0.1} />
-      ))}
-    </div>
-    
-    <AnimatedSection delay={0.5} className="text-center mt-14">
-      <Link to="/impact">
-        <motion.span
-          whileHover={{ scale: 1.05 }}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-gold/40 text-gold-light hover:bg-gold/20 transition-all text-sm font-bold backdrop-blur-sm shadow-lg hover:shadow-gold/20"
-        >
-          {lang === "ar" ? "المزيد عن أثرنا" : "More About Our Impact"}
-          {lang === "ar" ? <ArrowLeft size={16} strokeWidth={2.5} /> : <ArrowRight size={16} strokeWidth={2.5} />}
-        </motion.span>
-      </Link>
-    </AnimatedSection>
-  </div>
-</section>
-
+        {/* CTA */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <AnimatedSection className="max-w-3xl mx-auto text-center">
@@ -337,26 +324,15 @@ const Index = () => {
                   ? "نؤمن بأن التعاون هو المفتاح لتنمية القطاع غير الربحي. انضم إلينا لبناء مستقبل أفضل."
                   : "We believe collaboration is key to developing the non-profit sector. Join us in building a better future."}
               </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto">
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <motion.span
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full gradient-gold text-gold-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300"
-                  >
-                    {t.nav.contact[lang]}
-                  </motion.span>
-                </Link>
-                <Link to="/contact" className="w-full sm:w-auto">
-                  <motion.span
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center gap-2 px-10 py-4 w-full rounded-full border-2 border-gold/20 text-foreground font-bold hover:bg-gold/5 transition-all duration-300"
-                  >
-                    {t.nav.contact[lang]}
-                  </motion.span>
-                </Link>
-              </div>
+              <Link to="/contact" className="inline-block">
+                <motion.span
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-center gap-2 px-10 py-4 rounded-full gradient-gold text-gold-foreground font-bold shadow-xl hover:shadow-2xl transition-all duration-300"
+                >
+                  {t.nav.contact[lang]}
+                </motion.span>
+              </Link>
             </AnimatedSection>
           </div>
         </section>
@@ -364,23 +340,6 @@ const Index = () => {
         <Footer />
       </div>
     </PageTransition>
-  );
-};
-
-const CounterCard = ({ value, label, delay }: { value: number; label: string; delay: number }) => {
-  const { count, ref } = useCounter(value);
-  return (
-    <AnimatedSection delay={delay}>
-      <div ref={ref} className="text-center">
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          className="text-4xl md:text-5xl font-bold mb-3 font-cairo text-gradient-gold"
-        >
-          {count > 0 ? `+${count.toLocaleString()}` : "0"}
-        </motion.div>
-        <p className="text-primary-foreground/60 text-sm font-medium">{label}</p>
-      </div>
-    </AnimatedSection>
   );
 };
 
